@@ -1,0 +1,2 @@
+bekci
+-DCATKIN_DEVEL_PREFIX=/home/fatih/bekci/devel -DCMAKE_INSTALL_PREFIX=/home/fatih/bekci/install -G Unix Makefiles

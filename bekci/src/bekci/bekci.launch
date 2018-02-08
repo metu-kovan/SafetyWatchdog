@@ -1,0 +1,14 @@
+<launch>
+<group ns="guvenlik_bekcisi">
+    <node
+        pkg="bekci"
+        type="limiter"
+        name="quantative_velocity_limiter"
+        />
+    <node
+        pkg="bekci"
+        type="space"
+        name="safe_space_limiter"
+        />
+</group>
+</launch>
