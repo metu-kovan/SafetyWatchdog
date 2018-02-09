@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/fatih/bekci/src
+CMAKE_SOURCE_DIR = /home/fatih/git/GuvenlikBekcisi/bekci/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/fatih/bekci/build
+CMAKE_BINARY_DIR = /home/fatih/git/GuvenlikBekcisi/bekci/build
 
 # Utility rule file for doxygen.
 
@@ -63,6 +63,6 @@ CMakeFiles/doxygen.dir/clean:
 .PHONY : CMakeFiles/doxygen.dir/clean
 
 CMakeFiles/doxygen.dir/depend:
-	cd /home/fatih/bekci/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/fatih/bekci/src /home/fatih/bekci/src /home/fatih/bekci/build /home/fatih/bekci/build /home/fatih/bekci/build/CMakeFiles/doxygen.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/fatih/git/GuvenlikBekcisi/bekci/src /home/fatih/git/GuvenlikBekcisi/bekci/src /home/fatih/git/GuvenlikBekcisi/bekci/build /home/fatih/git/GuvenlikBekcisi/bekci/build /home/fatih/git/GuvenlikBekcisi/bekci/build/CMakeFiles/doxygen.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/doxygen.dir/depend
 

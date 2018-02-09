@@ -7,12 +7,13 @@ project(bekci)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS sensor_msgs control_msgs std_msgs roscpp rospack roslib)
+find_package(catkin REQUIRED COMPONENTS genmsg std_msgs message_generation sensor_msgs control_msgs  roscpp rospack roslib)
 #rosbuild_add_boost_directories()
 ## System dependencies are found with CMake's conventions
 find_package(Boost REQUIRED COMPONENTS system )
 add_compile_options(-std=c++11)
-
+add_message_files(FILES JointValue.msg)
+generate_messages(DEPENDENCIES std_msgs)
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
 ## See http://ros.org/doc/api/catkin/html/user_guide/setup_dot_py.html
@@ -102,7 +103,7 @@ add_compile_options(-std=c++11)
 
 catkin_package(
 
-   CATKIN_DEPENDS roscpp std_msgs actionlib_msgs control_msgs actionlib
+   CATKIN_DEPENDS roscpp std_msgs actionlib_msgs control_msgs actionlib message_runtime
 )
 
 ###########
@@ -119,6 +120,8 @@ add_executable(limiter quantative.cpp)
 target_link_libraries(limiter ${catkin_LIBRARIES} ${boost_LIBRARIES})
 add_executable(space space.cpp)
 target_link_libraries(space ${catkin_LIBRARIES} ${boost_LIBRARIES})
+add_executable(safety_level_check safety_level_check.cpp)
+target_link_libraries(safety_level_check ${catkin_LIBRARIES} ${boost_LIBRARIES})
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/bekci.cpp

@@ -1,7 +1,7 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/space.dir/space.cpp.o"
-  "/home/fatih/bekci/devel/lib/bekci/space.pdb"
-  "/home/fatih/bekci/devel/lib/bekci/space"
+  "/home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space.pdb"
+  "/home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space"
 )
 
 # Per-language clean rules from dependency scanning.

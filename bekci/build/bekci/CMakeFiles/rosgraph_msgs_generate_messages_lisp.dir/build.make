@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/fatih/bekci/src
+CMAKE_SOURCE_DIR = /home/fatih/git/GuvenlikBekcisi/bekci/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/fatih/bekci/build
+CMAKE_BINARY_DIR = /home/fatih/git/GuvenlikBekcisi/bekci/build
 
 # Utility rule file for rosgraph_msgs_generate_messages_lisp.
 
@@ -59,10 +59,10 @@ bekci/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build: rosgraph_msgs_g
 .PHONY : bekci/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
 
 bekci/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean:
-	cd /home/fatih/bekci/build/bekci && $(CMAKE_COMMAND) -P CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/cmake_clean.cmake
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build/bekci && $(CMAKE_COMMAND) -P CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/cmake_clean.cmake
 .PHONY : bekci/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/clean
 
 bekci/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/depend:
-	cd /home/fatih/bekci/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/fatih/bekci/src /home/fatih/bekci/src/bekci /home/fatih/bekci/build /home/fatih/bekci/build/bekci /home/fatih/bekci/build/bekci/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/fatih/git/GuvenlikBekcisi/bekci/src /home/fatih/git/GuvenlikBekcisi/bekci/src/bekci /home/fatih/git/GuvenlikBekcisi/bekci/build /home/fatih/git/GuvenlikBekcisi/bekci/build/bekci /home/fatih/git/GuvenlikBekcisi/bekci/build/bekci/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : bekci/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/depend
 

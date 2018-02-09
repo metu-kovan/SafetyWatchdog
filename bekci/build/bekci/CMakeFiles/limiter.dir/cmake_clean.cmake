@@ -1,7 +1,7 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/limiter.dir/quantative.cpp.o"
-  "/home/fatih/bekci/devel/lib/bekci/limiter.pdb"
-  "/home/fatih/bekci/devel/lib/bekci/limiter"
+  "/home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/limiter.pdb"
+  "/home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/limiter"
 )
 
 # Per-language clean rules from dependency scanning.

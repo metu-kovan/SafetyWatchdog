@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/fatih/bekci/src/bekci/quantative.cpp
+/home/fatih/git/GuvenlikBekcisi/bekci/src/bekci/quantative.cpp
 ros/ros.h
 -
 iostream
