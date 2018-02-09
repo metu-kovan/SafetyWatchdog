@@ -117,11 +117,16 @@ include_directories(
  ${catkin_INCLUDE_DIRS}
 )
 add_executable(limiter quantative.cpp)
-target_link_libraries(limiter ${catkin_LIBRARIES} ${boost_LIBRARIES})
+add_executable(JointValueConverter JointValueConverter.cpp)
 add_executable(space space.cpp)
-target_link_libraries(space ${catkin_LIBRARIES} ${boost_LIBRARIES})
 add_executable(safety_level_check safety_level_check.cpp)
+
+
+target_link_libraries(limiter ${catkin_LIBRARIES} ${boost_LIBRARIES})
+target_link_libraries(JointValueConverter ${catkin_LIBRARIES})
+target_link_libraries(space ${catkin_LIBRARIES} ${boost_LIBRARIES})
 target_link_libraries(safety_level_check ${catkin_LIBRARIES} ${boost_LIBRARIES})
+
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/bekci.cpp
