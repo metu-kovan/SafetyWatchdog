@@ -1,2 +1,0 @@
-bekci
--DCATKIN_DEVEL_PREFIX=/home/fatih/git/GuvenlikBekcisi/bekci/devel -DCMAKE_INSTALL_PREFIX=/home/fatih/git/GuvenlikBekcisi/bekci/install -G Unix Makefiles
