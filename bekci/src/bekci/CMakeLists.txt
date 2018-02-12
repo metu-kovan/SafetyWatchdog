@@ -12,7 +12,7 @@ find_package(catkin REQUIRED COMPONENTS genmsg std_msgs message_generation senso
 ## System dependencies are found with CMake's conventions
 find_package(Boost REQUIRED COMPONENTS system )
 add_compile_options(-std=c++11)
-add_message_files(FILES JointValue.msg)
+add_message_files(FILES JointVelocity.msg)
 generate_messages(DEPENDENCIES std_msgs)
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed
@@ -117,15 +117,23 @@ include_directories(
  ${catkin_INCLUDE_DIRS}
 )
 add_executable(limiter quantative.cpp)
-target_link_libraries(limiter ${catkin_LIBRARIES} ${boost_LIBRARIES})
+add_executable(Joint_Velocity_Converter define_joints.cpp)
 add_executable(space space.cpp)
-target_link_libraries(space ${catkin_LIBRARIES} ${boost_LIBRARIES})
 add_executable(safety_level_check safety_level_check.cpp)
+
+
+target_link_libraries(limiter ${catkin_LIBRARIES} ${boost_LIBRARIES})
+target_link_libraries(Joint_Velocity_Converter ${catkin_LIBRARIES})
+target_link_libraries(space ${catkin_LIBRARIES} ${boost_LIBRARIES})
 target_link_libraries(safety_level_check ${catkin_LIBRARIES} ${boost_LIBRARIES})
+
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/bekci.cpp
 # )
+
+
+
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
