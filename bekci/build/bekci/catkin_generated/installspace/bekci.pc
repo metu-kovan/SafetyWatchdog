@@ -1,0 +1,8 @@
+prefix=/home/fatih/git/GuvenlikBekcisi/bekci/install
+
+Name: bekci
+Description: Description of bekci
+Version: 0.0.0
+Cflags: -I/home/fatih/git/GuvenlikBekcisi/bekci/install/include
+Libs: -L/home/fatih/git/GuvenlikBekcisi/bekci/install/lib 
+Requires: roscpp std_msgs actionlib_msgs control_msgs actionlib message_runtime
