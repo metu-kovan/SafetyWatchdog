@@ -2,7 +2,7 @@
 #include <iostream>
 #include <map>
 #include <string>
-#include <sensor_msgs/JointState.h>
+#include <bekci/JointVelocity.h>
 #include <fstream>
 #include <vector>
 #include <ros/package.h>
@@ -12,30 +12,30 @@
 #include <stdlib.h>
 using namespace std;
 bool fault = false;
-ros::Publisher* pub; 
+ros::Publisher* pub;
 map<string,float> given_limits;
 string current_goal;
 vector<float> vec_keep;
 void goalIDKeeper(const control_msgs::FollowJointTrajectoryActionGoal& msg) {
     current_goal=msg.goal_id.id;
 }
-void limiter(const sensor_msgs::JointState & msg) {
+void limiter(const bekci::JointVelocity & msg) {
 
     string name("elbow_joint");
     actionlib_msgs::GoalID cancel;
     for(int i=0;i<6;i++) {
-        if(name.compare(msg.name[i])==0) {
-            vec_keep.push_back(msg.velocity[i]);
+        if(name.compare(msg.names[i])==0) {
+            vec_keep.push_back(msg.velocities[i]);
         }
-        ROS_INFO_STREAM(msg.name[i]<<" limit "<<given_limits[msg.name[i]]<<" message "<<msg.velocity[i]);
-        if(abs(given_limits[msg.name[i]]) < abs(msg.velocity[i])) {
+        ROS_INFO_STREAM(msg.names[i]<<" limit "<<given_limits[msg.names[i]]<<" message "<<msg.velocities[i]);
+        if(abs(given_limits[msg.names[i]]) < abs(msg.velocities[i])) {
             ROS_INFO_STREAM("wow");
             fault = true;
             cancel.id=current_goal;
             pub->publish(cancel);
             break;
         }
-        
+
     }
 
 
@@ -47,7 +47,7 @@ int main(int argc,char** argv) {
     ros::init(argc, argv, "quantative_limiter");
     ros::NodeHandle nh;
     string line;
-    ifstream inFile("/home/fatih/bekci/src/bekci/limits.txt");
+    ifstream inFile("~/bekci/src/bekci/limits.txt");
     string::size_type sz;
     string pack("bekci");
     string  a= ros::package::getPath(pack);
@@ -66,16 +66,16 @@ int main(int argc,char** argv) {
     ROS_INFO_STREAM("2");
     ros::Rate rate(10);
 
-    ros::Subscriber sub_state = nh.subscribe("/joint_states", 100, &limiter);
+    ros::Subscriber sub_state = nh.subscribe("/converted_joint_velociti", 100, &limiter);
     ros::Subscriber sub_goal = nh.subscribe("/follow_joint_trajectory/goal",1000,&goalIDKeeper);
-    
+
     pub= new ros::Publisher(nh.advertise<actionlib_msgs::GoalID>("/follow_joint_trajectory/cancel",10));
     while(ros::ok()) {
 
         ros::spinOnce();
         rate.sleep();
     }
-    ofstream outFile("/home/fatih/bekci/src/bekci/output.txt");
+    ofstream outFile("~/bekci/src/bekci/output.txt");
     if(outFile.is_open()) {
         string temp("");
         string vir(",");

@@ -1,0 +1,8 @@
+<launch>
+<group ns="guvenlik_bekcisi">
+    <node name="Test_Ros_passing"
+        pkg="box_module"
+        type="test_ros.py"        
+        />
+</group>
+</launch>
