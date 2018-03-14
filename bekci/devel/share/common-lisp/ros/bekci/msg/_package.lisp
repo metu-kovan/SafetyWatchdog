@@ -1,10 +1,10 @@
 (cl:defpackage bekci-msg
   (:use )
   (:export
-   "<POSE>"
-   "POSE"
    "<JOINTVALUE>"
    "JOINTVALUE"
+   "<POSE>"
+   "POSE"
    "<JOINTPOSE>"
    "JOINTPOSE"
   ))

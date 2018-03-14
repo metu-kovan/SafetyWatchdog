@@ -143,46 +143,7 @@ void forward() {
     pose_hold[5].x = d4s1 + d6*(c5*s1 - s5*(c4*(c1c2c3 - c1s2s3) - s4*(c1c2s3 + c1c3s2))) + d5*(c4*(c1c2s3 + c1c3s2) + s4*(c1c2c3 - c1s2s3)) + a2c1c2 - a3c1s2s3 + a3c1c2c3;
     pose_hold[5].y = d5*(c4*(c2s1s3 + c3s1s2) + s4*(c2c3s1 - s1s2s3)) - c1d4 - d6*(c1*c5 + s5*(c4*(c2c3s1 - s1s2s3) - s4*(c2s1s3 + c3s1s2))) + a2c2s1 - a3s1s2s3 + a3c2c3s1;
     pose_hold[5].z = d1 + a2s2 - d5*(c4*(c2c3 - s2s3) - s4*(c2s3 + c3s2)) + a3c2s3 + a3c3s2 - d6*s5*(c4*(c2s3 + c3s2) + s4*(c2c3 - s2s3));
-    // ROS_INFO_STREAM("LESSS JOOOB");
-    // ROS_INFO_STREAM("joint 0 x: "<<pose_hold[0].x<<" y: "<<pose_hold[0].y<<" z: "<<pose_hold[0].z);
-    // ROS_INFO_STREAM("joint 1 x: "<<pose_hold[1].x<<" y: "<<pose_hold[1].y<<" z: "<<pose_hold[1].z);
-    // ROS_INFO_STREAM("joint 2 x: "<<pose_hold[2].x<<" y: "<<pose_hold[2].y<<" z: "<<pose_hold[2].z);
-    // ROS_INFO_STREAM("joint 3 x: "<<pose_hold[3].x<<" y: "<<pose_hold[3].y<<" z: "<<pose_hold[3].z);
-    // ROS_INFO_STREAM("joint 4 x: "<<pose_hold[4].x<<" y: "<<pose_hold[4].y<<" z: "<<pose_hold[4].z);
-    // ROS_INFO_STREAM("joint 5 x: "<<pose_hold[5].x<<" y: "<<pose_hold[5].y<<" z: "<<pose_hold[5].z);
     
-/*
-    pose_hold[0].x = 0;
-    pose_hold[0].y = 0;
-    pose_hold[0].z = d1;
-
-    pose_hold[1].x = a2*c1*c2;
-    pose_hold[1].y = a2*c2*s1;
-    pose_hold[1].z = d1 + a2*s2;
-
-    pose_hold[2].x = a2*c1*c2 - a3*c1*s2*s3 + a3*c1*c2*c3;
-    pose_hold[2].y = a2*c2*s1 - a3*s1*s2*s3 + a3*c2*c3*s1;
-    pose_hold[2].z = d1 + a2*s2 + a3*c2*s3 + a3*c3*s2;
-
-    pose_hold[3].x = d4*s1 + a2*c1*c2 - a3*c1*s2*s3 + a3*c1*c2*c3;
-    pose_hold[3].y = a2*c2*s1 - c1*d4 - a3*s1*s2*s3 + a3*c2*c3*s1;
-    pose_hold[3].z = d1 + a2*s2 + a3*c2*s3 + a3*c3*s2;
-
-    pose_hold[4].x = d4*s1 + d5*(c4*(c1*c2*s3 + c1*c3*s2) + s4*(c1*c2*c3 - c1*s2*s3)) + a2*c1*c2 - a3*c1*s2*s3 + a3*c1*c2*c3;
-    pose_hold[4].y = d5*(c4*(c2*s1*s3 + c3*s1*s2) + s4*(c2*c3*s1 - s1*s2*s3)) - c1*d4 + a2*c2*s1 - a3*s1*s2*s3 + a3*c2*c3*s1;
-    pose_hold[4].z = d1 + a2*s2 - d5*(c4*(c2*c3 - s2*s3) - s4*(c2*s3 + c3*s2)) + a3*c2*s3 + a3*c3*s2;
-
-    pose_hold[5].x = d4*s1 + d6*(c5*s1 - s5*(c4*(c1*c2*c3 - c1*s2*s3) - s4*(c1*c2*s3 + c1*c3*s2))) + d5*(c4*(c1*c2*s3 + c1*c3*s2) + s4*(c1*c2*c3 - c1*s2*s3)) + a2*c1*c2 - a3*c1*s2*s3 + a3*c1*c2*c3;
-    pose_hold[5].y = d5*(c4*(c2*s1*s3 + c3*s1*s2) + s4*(c2*c3*s1 - s1*s2*s3)) - c1*d4 - d6*(c1*c5 + s5*(c4*(c2*c3*s1 - s1*s2*s3) - s4*(c2*s1*s3 + c3*s1*s2))) + a2*c2*s1 - a3*s1*s2*s3 + a3*c2*c3*s1;
-    pose_hold[5].z = d1 + a2*s2 - d5*(c4*(c2*c3 - s2*s3) - s4*(c2*s3 + c3*s2)) + a3*c2*s3 + a3*c3*s2 - d6*s5*(c4*(c2*s3 + c3*s2) + s4*(c2*c3 - s2*s3));
-    ROS_INFO_STREAM("MORE JOOOOB");
-    ROS_INFO_STREAM("joint 0 x: "<<pose_hold[0].x<<" y: "<<pose_hold[0].y<<" z: "<<pose_hold[0].z);
-    ROS_INFO_STREAM("joint 1 x: "<<pose_hold[1].x<<" y: "<<pose_hold[1].y<<" z: "<<pose_hold[1].z);
-    ROS_INFO_STREAM("joint 2 x: "<<pose_hold[2].x<<" y: "<<pose_hold[2].y<<" z: "<<pose_hold[2].z);
-    ROS_INFO_STREAM("joint 3 x: "<<pose_hold[3].x<<" y: "<<pose_hold[3].y<<" z: "<<pose_hold[3].z);
-    ROS_INFO_STREAM("joint 4 x: "<<pose_hold[4].x<<" y: "<<pose_hold[4].y<<" z: "<<pose_hold[4].z);
-    ROS_INFO_STREAM("joint 5 x: "<<pose_hold[5].x<<" y: "<<pose_hold[5].y<<" z: "<<pose_hold[5].z);
-    */
 }
 
 

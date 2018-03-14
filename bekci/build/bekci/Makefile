@@ -38,9 +38,6 @@ RM = /usr/bin/cmake -E remove -f
 # Escaping for special characters.
 EQUALS = =
 
-# The program to use to edit the cache.
-CMAKE_EDIT_COMMAND = /usr/bin/ccmake
-
 # The top-level source directory on which CMake was run.
 CMAKE_SOURCE_DIR = /home/fatih/git/GuvenlikBekcisi/bekci/src
 
@@ -52,8 +49,8 @@ CMAKE_BINARY_DIR = /home/fatih/git/GuvenlikBekcisi/bekci/build
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/bin/ccmake -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running interactive CMake command-line interface..."
+	/usr/bin/cmake -i .
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -475,6 +472,20 @@ limiter/fast:
 .PHONY : limiter/fast
 
 # Convenience name for target.
+bekci/CMakeFiles/pugi.dir/rule:
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f CMakeFiles/Makefile2 bekci/CMakeFiles/pugi.dir/rule
+.PHONY : bekci/CMakeFiles/pugi.dir/rule
+
+# Convenience name for target.
+pugi: bekci/CMakeFiles/pugi.dir/rule
+.PHONY : pugi
+
+# fast build rule for target.
+pugi/fast:
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f bekci/CMakeFiles/pugi.dir/build.make bekci/CMakeFiles/pugi.dir/build
+.PHONY : pugi/fast
+
+# Convenience name for target.
 bekci/CMakeFiles/roscpp_generate_messages_cpp.dir/rule:
 	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f CMakeFiles/Makefile2 bekci/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
 .PHONY : bekci/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
@@ -615,6 +626,48 @@ sensor_msgs_generate_messages_py/fast:
 .PHONY : sensor_msgs_generate_messages_py/fast
 
 # Convenience name for target.
+bekci/CMakeFiles/shape_msgs_generate_messages_cpp.dir/rule:
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f CMakeFiles/Makefile2 bekci/CMakeFiles/shape_msgs_generate_messages_cpp.dir/rule
+.PHONY : bekci/CMakeFiles/shape_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+shape_msgs_generate_messages_cpp: bekci/CMakeFiles/shape_msgs_generate_messages_cpp.dir/rule
+.PHONY : shape_msgs_generate_messages_cpp
+
+# fast build rule for target.
+shape_msgs_generate_messages_cpp/fast:
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f bekci/CMakeFiles/shape_msgs_generate_messages_cpp.dir/build.make bekci/CMakeFiles/shape_msgs_generate_messages_cpp.dir/build
+.PHONY : shape_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+bekci/CMakeFiles/shape_msgs_generate_messages_lisp.dir/rule:
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f CMakeFiles/Makefile2 bekci/CMakeFiles/shape_msgs_generate_messages_lisp.dir/rule
+.PHONY : bekci/CMakeFiles/shape_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+shape_msgs_generate_messages_lisp: bekci/CMakeFiles/shape_msgs_generate_messages_lisp.dir/rule
+.PHONY : shape_msgs_generate_messages_lisp
+
+# fast build rule for target.
+shape_msgs_generate_messages_lisp/fast:
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f bekci/CMakeFiles/shape_msgs_generate_messages_lisp.dir/build.make bekci/CMakeFiles/shape_msgs_generate_messages_lisp.dir/build
+.PHONY : shape_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+bekci/CMakeFiles/shape_msgs_generate_messages_py.dir/rule:
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f CMakeFiles/Makefile2 bekci/CMakeFiles/shape_msgs_generate_messages_py.dir/rule
+.PHONY : bekci/CMakeFiles/shape_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+shape_msgs_generate_messages_py: bekci/CMakeFiles/shape_msgs_generate_messages_py.dir/rule
+.PHONY : shape_msgs_generate_messages_py
+
+# fast build rule for target.
+shape_msgs_generate_messages_py/fast:
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f bekci/CMakeFiles/shape_msgs_generate_messages_py.dir/build.make bekci/CMakeFiles/shape_msgs_generate_messages_py.dir/build
+.PHONY : shape_msgs_generate_messages_py/fast
+
+# Convenience name for target.
 bekci/CMakeFiles/space.dir/rule:
 	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f CMakeFiles/Makefile2 bekci/CMakeFiles/space.dir/rule
 .PHONY : bekci/CMakeFiles/space.dir/rule
@@ -712,6 +765,48 @@ trajectory_msgs_generate_messages_py/fast:
 	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f bekci/CMakeFiles/trajectory_msgs_generate_messages_py.dir/build.make bekci/CMakeFiles/trajectory_msgs_generate_messages_py.dir/build
 .PHONY : trajectory_msgs_generate_messages_py/fast
 
+# Convenience name for target.
+bekci/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/rule:
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f CMakeFiles/Makefile2 bekci/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/rule
+.PHONY : bekci/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+visualization_msgs_generate_messages_cpp: bekci/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/rule
+.PHONY : visualization_msgs_generate_messages_cpp
+
+# fast build rule for target.
+visualization_msgs_generate_messages_cpp/fast:
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f bekci/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/build.make bekci/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/build
+.PHONY : visualization_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
+bekci/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule:
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f CMakeFiles/Makefile2 bekci/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule
+.PHONY : bekci/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+visualization_msgs_generate_messages_lisp: bekci/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule
+.PHONY : visualization_msgs_generate_messages_lisp
+
+# fast build rule for target.
+visualization_msgs_generate_messages_lisp/fast:
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f bekci/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/build.make bekci/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/build
+.PHONY : visualization_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+bekci/CMakeFiles/visualization_msgs_generate_messages_py.dir/rule:
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f CMakeFiles/Makefile2 bekci/CMakeFiles/visualization_msgs_generate_messages_py.dir/rule
+.PHONY : bekci/CMakeFiles/visualization_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+visualization_msgs_generate_messages_py: bekci/CMakeFiles/visualization_msgs_generate_messages_py.dir/rule
+.PHONY : visualization_msgs_generate_messages_py
+
+# fast build rule for target.
+visualization_msgs_generate_messages_py/fast:
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f bekci/CMakeFiles/visualization_msgs_generate_messages_py.dir/build.make bekci/CMakeFiles/visualization_msgs_generate_messages_py.dir/build
+.PHONY : visualization_msgs_generate_messages_py/fast
+
 JointValueConverter.o: JointValueConverter.cpp.o
 .PHONY : JointValueConverter.o
 
@@ -736,6 +831,102 @@ JointValueConverter.cpp.s:
 	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f bekci/CMakeFiles/JointValueConverter.dir/build.make bekci/CMakeFiles/JointValueConverter.dir/JointValueConverter.cpp.s
 .PHONY : JointValueConverter.cpp.s
 
+Plane.o: Plane.cpp.o
+.PHONY : Plane.o
+
+# target to build an object file
+Plane.cpp.o:
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f bekci/CMakeFiles/space.dir/build.make bekci/CMakeFiles/space.dir/Plane.cpp.o
+.PHONY : Plane.cpp.o
+
+Plane.i: Plane.cpp.i
+.PHONY : Plane.i
+
+# target to preprocess a source file
+Plane.cpp.i:
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f bekci/CMakeFiles/space.dir/build.make bekci/CMakeFiles/space.dir/Plane.cpp.i
+.PHONY : Plane.cpp.i
+
+Plane.s: Plane.cpp.s
+.PHONY : Plane.s
+
+# target to generate assembly for a file
+Plane.cpp.s:
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f bekci/CMakeFiles/space.dir/build.make bekci/CMakeFiles/space.dir/Plane.cpp.s
+.PHONY : Plane.cpp.s
+
+Point.o: Point.cpp.o
+.PHONY : Point.o
+
+# target to build an object file
+Point.cpp.o:
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f bekci/CMakeFiles/space.dir/build.make bekci/CMakeFiles/space.dir/Point.cpp.o
+.PHONY : Point.cpp.o
+
+Point.i: Point.cpp.i
+.PHONY : Point.i
+
+# target to preprocess a source file
+Point.cpp.i:
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f bekci/CMakeFiles/space.dir/build.make bekci/CMakeFiles/space.dir/Point.cpp.i
+.PHONY : Point.cpp.i
+
+Point.s: Point.cpp.s
+.PHONY : Point.s
+
+# target to generate assembly for a file
+Point.cpp.s:
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f bekci/CMakeFiles/space.dir/build.make bekci/CMakeFiles/space.dir/Point.cpp.s
+.PHONY : Point.cpp.s
+
+Sphere.o: Sphere.cpp.o
+.PHONY : Sphere.o
+
+# target to build an object file
+Sphere.cpp.o:
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f bekci/CMakeFiles/space.dir/build.make bekci/CMakeFiles/space.dir/Sphere.cpp.o
+.PHONY : Sphere.cpp.o
+
+Sphere.i: Sphere.cpp.i
+.PHONY : Sphere.i
+
+# target to preprocess a source file
+Sphere.cpp.i:
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f bekci/CMakeFiles/space.dir/build.make bekci/CMakeFiles/space.dir/Sphere.cpp.i
+.PHONY : Sphere.cpp.i
+
+Sphere.s: Sphere.cpp.s
+.PHONY : Sphere.s
+
+# target to generate assembly for a file
+Sphere.cpp.s:
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f bekci/CMakeFiles/space.dir/build.make bekci/CMakeFiles/space.dir/Sphere.cpp.s
+.PHONY : Sphere.cpp.s
+
+Vec3d.o: Vec3d.cpp.o
+.PHONY : Vec3d.o
+
+# target to build an object file
+Vec3d.cpp.o:
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f bekci/CMakeFiles/space.dir/build.make bekci/CMakeFiles/space.dir/Vec3d.cpp.o
+.PHONY : Vec3d.cpp.o
+
+Vec3d.i: Vec3d.cpp.i
+.PHONY : Vec3d.i
+
+# target to preprocess a source file
+Vec3d.cpp.i:
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f bekci/CMakeFiles/space.dir/build.make bekci/CMakeFiles/space.dir/Vec3d.cpp.i
+.PHONY : Vec3d.cpp.i
+
+Vec3d.s: Vec3d.cpp.s
+.PHONY : Vec3d.s
+
+# target to generate assembly for a file
+Vec3d.cpp.s:
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f bekci/CMakeFiles/space.dir/build.make bekci/CMakeFiles/space.dir/Vec3d.cpp.s
+.PHONY : Vec3d.cpp.s
+
 forward_calculator.o: forward_calculator.cpp.o
 .PHONY : forward_calculator.o
 
@@ -759,6 +950,30 @@ forward_calculator.s: forward_calculator.cpp.s
 forward_calculator.cpp.s:
 	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f bekci/CMakeFiles/forward_calculator.dir/build.make bekci/CMakeFiles/forward_calculator.dir/forward_calculator.cpp.s
 .PHONY : forward_calculator.cpp.s
+
+pugixml.o: pugixml.cpp.o
+.PHONY : pugixml.o
+
+# target to build an object file
+pugixml.cpp.o:
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f bekci/CMakeFiles/pugi.dir/build.make bekci/CMakeFiles/pugi.dir/pugixml.cpp.o
+.PHONY : pugixml.cpp.o
+
+pugixml.i: pugixml.cpp.i
+.PHONY : pugixml.i
+
+# target to preprocess a source file
+pugixml.cpp.i:
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f bekci/CMakeFiles/pugi.dir/build.make bekci/CMakeFiles/pugi.dir/pugixml.cpp.i
+.PHONY : pugixml.cpp.i
+
+pugixml.s: pugixml.cpp.s
+.PHONY : pugixml.s
+
+# target to generate assembly for a file
+pugixml.cpp.s:
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build && $(MAKE) -f bekci/CMakeFiles/pugi.dir/build.make bekci/CMakeFiles/pugi.dir/pugixml.cpp.s
+.PHONY : pugixml.cpp.s
 
 quantative.o: quantative.cpp.o
 .PHONY : quantative.o
@@ -866,6 +1081,7 @@ help:
 	@echo "... install/strip"
 	@echo "... limiter"
 	@echo "... list_install_components"
+	@echo "... pugi"
 	@echo "... rebuild_cache"
 	@echo "... roscpp_generate_messages_cpp"
 	@echo "... roscpp_generate_messages_lisp"
@@ -877,6 +1093,9 @@ help:
 	@echo "... sensor_msgs_generate_messages_cpp"
 	@echo "... sensor_msgs_generate_messages_lisp"
 	@echo "... sensor_msgs_generate_messages_py"
+	@echo "... shape_msgs_generate_messages_cpp"
+	@echo "... shape_msgs_generate_messages_lisp"
+	@echo "... shape_msgs_generate_messages_py"
 	@echo "... space"
 	@echo "... std_msgs_generate_messages_cpp"
 	@echo "... std_msgs_generate_messages_lisp"
@@ -885,12 +1104,30 @@ help:
 	@echo "... trajectory_msgs_generate_messages_cpp"
 	@echo "... trajectory_msgs_generate_messages_lisp"
 	@echo "... trajectory_msgs_generate_messages_py"
+	@echo "... visualization_msgs_generate_messages_cpp"
+	@echo "... visualization_msgs_generate_messages_lisp"
+	@echo "... visualization_msgs_generate_messages_py"
 	@echo "... JointValueConverter.o"
 	@echo "... JointValueConverter.i"
 	@echo "... JointValueConverter.s"
+	@echo "... Plane.o"
+	@echo "... Plane.i"
+	@echo "... Plane.s"
+	@echo "... Point.o"
+	@echo "... Point.i"
+	@echo "... Point.s"
+	@echo "... Sphere.o"
+	@echo "... Sphere.i"
+	@echo "... Sphere.s"
+	@echo "... Vec3d.o"
+	@echo "... Vec3d.i"
+	@echo "... Vec3d.s"
 	@echo "... forward_calculator.o"
 	@echo "... forward_calculator.i"
 	@echo "... forward_calculator.s"
+	@echo "... pugixml.o"
+	@echo "... pugixml.i"
+	@echo "... pugixml.s"
 	@echo "... quantative.o"
 	@echo "... quantative.i"
 	@echo "... quantative.s"

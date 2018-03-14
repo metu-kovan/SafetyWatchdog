@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(bekci_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/fatih/git/GuvenlikBekcisi/bekci/devel/include " STREQUAL " ")
+if(NOT "/home/fatih/git/GuvenlikBekcisi/bekci/devel/include;/home/fatih/git/GuvenlikBekcisi/bekci/src/bekci/include " STREQUAL " ")
   set(bekci_INCLUDE_DIRS "")
-  set(_include_dirs "/home/fatih/git/GuvenlikBekcisi/bekci/devel/include")
+  set(_include_dirs "/home/fatih/git/GuvenlikBekcisi/bekci/devel/include;/home/fatih/git/GuvenlikBekcisi/bekci/src/bekci/include")
   foreach(idir ${_include_dirs})
     if(IS_ABSOLUTE ${idir} AND IS_DIRECTORY ${idir})
       set(include ${idir})
@@ -109,7 +109,7 @@ if(NOT "/home/fatih/git/GuvenlikBekcisi/bekci/devel/include " STREQUAL " ")
   endforeach()
 endif()
 
-set(libraries "")
+set(libraries "pugi")
 foreach(library ${libraries})
   # keep build configuration keywords, target names and absolute libraries as-is
   if("${library}" MATCHES "^(debug|optimized|general)$")
@@ -122,7 +122,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/fatih/git/GuvenlikBekcisi/bekci/devel/lib;/home/fatih/ur5/devel/lib;/opt/ros/indigo/lib)
+    foreach(path /home/fatih/git/GuvenlikBekcisi/bekci/devel/lib;/home/fatih/universal_robotics/devel/lib;/opt/ros/indigo/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

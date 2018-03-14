@@ -24,6 +24,7 @@ SET(CMAKE_C_TARGET_INCLUDE_PATH
   "/home/fatih/git/GuvenlikBekcisi/bekci/devel/include"
   "/home/fatih/git/GuvenlikBekcisi/bekci/src/bekci/include"
   "/opt/ros/indigo/include"
+  "/usr/include/eigen3"
   )
 SET(CMAKE_CXX_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})
 SET(CMAKE_Fortran_TARGET_INCLUDE_PATH ${CMAKE_C_TARGET_INCLUDE_PATH})

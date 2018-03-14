@@ -1,0 +1,1 @@
+/usr/bin/c++  -fPIC    -shared -Wl,-soname,libpugi.so -o /home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/libpugi.so CMakeFiles/pugi.dir/pugixml.cpp.o 

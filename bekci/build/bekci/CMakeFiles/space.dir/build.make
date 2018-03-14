@@ -34,9 +34,6 @@ RM = /usr/bin/cmake -E remove -f
 # Escaping for special characters.
 EQUALS = =
 
-# The program to use to edit the cache.
-CMAKE_EDIT_COMMAND = /usr/bin/ccmake
-
 # The top-level source directory on which CMake was run.
 CMAKE_SOURCE_DIR = /home/fatih/git/GuvenlikBekcisi/bekci/src
 
@@ -75,14 +72,114 @@ bekci/CMakeFiles/space.dir/space.cpp.o.provides: bekci/CMakeFiles/space.dir/spac
 
 bekci/CMakeFiles/space.dir/space.cpp.o.provides.build: bekci/CMakeFiles/space.dir/space.cpp.o
 
+bekci/CMakeFiles/space.dir/Point.cpp.o: bekci/CMakeFiles/space.dir/flags.make
+bekci/CMakeFiles/space.dir/Point.cpp.o: /home/fatih/git/GuvenlikBekcisi/bekci/src/bekci/Point.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/fatih/git/GuvenlikBekcisi/bekci/build/CMakeFiles $(CMAKE_PROGRESS_2)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object bekci/CMakeFiles/space.dir/Point.cpp.o"
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build/bekci && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/space.dir/Point.cpp.o -c /home/fatih/git/GuvenlikBekcisi/bekci/src/bekci/Point.cpp
+
+bekci/CMakeFiles/space.dir/Point.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/space.dir/Point.cpp.i"
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build/bekci && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/fatih/git/GuvenlikBekcisi/bekci/src/bekci/Point.cpp > CMakeFiles/space.dir/Point.cpp.i
+
+bekci/CMakeFiles/space.dir/Point.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/space.dir/Point.cpp.s"
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build/bekci && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/fatih/git/GuvenlikBekcisi/bekci/src/bekci/Point.cpp -o CMakeFiles/space.dir/Point.cpp.s
+
+bekci/CMakeFiles/space.dir/Point.cpp.o.requires:
+.PHONY : bekci/CMakeFiles/space.dir/Point.cpp.o.requires
+
+bekci/CMakeFiles/space.dir/Point.cpp.o.provides: bekci/CMakeFiles/space.dir/Point.cpp.o.requires
+	$(MAKE) -f bekci/CMakeFiles/space.dir/build.make bekci/CMakeFiles/space.dir/Point.cpp.o.provides.build
+.PHONY : bekci/CMakeFiles/space.dir/Point.cpp.o.provides
+
+bekci/CMakeFiles/space.dir/Point.cpp.o.provides.build: bekci/CMakeFiles/space.dir/Point.cpp.o
+
+bekci/CMakeFiles/space.dir/Sphere.cpp.o: bekci/CMakeFiles/space.dir/flags.make
+bekci/CMakeFiles/space.dir/Sphere.cpp.o: /home/fatih/git/GuvenlikBekcisi/bekci/src/bekci/Sphere.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/fatih/git/GuvenlikBekcisi/bekci/build/CMakeFiles $(CMAKE_PROGRESS_3)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object bekci/CMakeFiles/space.dir/Sphere.cpp.o"
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build/bekci && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/space.dir/Sphere.cpp.o -c /home/fatih/git/GuvenlikBekcisi/bekci/src/bekci/Sphere.cpp
+
+bekci/CMakeFiles/space.dir/Sphere.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/space.dir/Sphere.cpp.i"
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build/bekci && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/fatih/git/GuvenlikBekcisi/bekci/src/bekci/Sphere.cpp > CMakeFiles/space.dir/Sphere.cpp.i
+
+bekci/CMakeFiles/space.dir/Sphere.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/space.dir/Sphere.cpp.s"
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build/bekci && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/fatih/git/GuvenlikBekcisi/bekci/src/bekci/Sphere.cpp -o CMakeFiles/space.dir/Sphere.cpp.s
+
+bekci/CMakeFiles/space.dir/Sphere.cpp.o.requires:
+.PHONY : bekci/CMakeFiles/space.dir/Sphere.cpp.o.requires
+
+bekci/CMakeFiles/space.dir/Sphere.cpp.o.provides: bekci/CMakeFiles/space.dir/Sphere.cpp.o.requires
+	$(MAKE) -f bekci/CMakeFiles/space.dir/build.make bekci/CMakeFiles/space.dir/Sphere.cpp.o.provides.build
+.PHONY : bekci/CMakeFiles/space.dir/Sphere.cpp.o.provides
+
+bekci/CMakeFiles/space.dir/Sphere.cpp.o.provides.build: bekci/CMakeFiles/space.dir/Sphere.cpp.o
+
+bekci/CMakeFiles/space.dir/Vec3d.cpp.o: bekci/CMakeFiles/space.dir/flags.make
+bekci/CMakeFiles/space.dir/Vec3d.cpp.o: /home/fatih/git/GuvenlikBekcisi/bekci/src/bekci/Vec3d.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/fatih/git/GuvenlikBekcisi/bekci/build/CMakeFiles $(CMAKE_PROGRESS_4)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object bekci/CMakeFiles/space.dir/Vec3d.cpp.o"
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build/bekci && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/space.dir/Vec3d.cpp.o -c /home/fatih/git/GuvenlikBekcisi/bekci/src/bekci/Vec3d.cpp
+
+bekci/CMakeFiles/space.dir/Vec3d.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/space.dir/Vec3d.cpp.i"
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build/bekci && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/fatih/git/GuvenlikBekcisi/bekci/src/bekci/Vec3d.cpp > CMakeFiles/space.dir/Vec3d.cpp.i
+
+bekci/CMakeFiles/space.dir/Vec3d.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/space.dir/Vec3d.cpp.s"
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build/bekci && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/fatih/git/GuvenlikBekcisi/bekci/src/bekci/Vec3d.cpp -o CMakeFiles/space.dir/Vec3d.cpp.s
+
+bekci/CMakeFiles/space.dir/Vec3d.cpp.o.requires:
+.PHONY : bekci/CMakeFiles/space.dir/Vec3d.cpp.o.requires
+
+bekci/CMakeFiles/space.dir/Vec3d.cpp.o.provides: bekci/CMakeFiles/space.dir/Vec3d.cpp.o.requires
+	$(MAKE) -f bekci/CMakeFiles/space.dir/build.make bekci/CMakeFiles/space.dir/Vec3d.cpp.o.provides.build
+.PHONY : bekci/CMakeFiles/space.dir/Vec3d.cpp.o.provides
+
+bekci/CMakeFiles/space.dir/Vec3d.cpp.o.provides.build: bekci/CMakeFiles/space.dir/Vec3d.cpp.o
+
+bekci/CMakeFiles/space.dir/Plane.cpp.o: bekci/CMakeFiles/space.dir/flags.make
+bekci/CMakeFiles/space.dir/Plane.cpp.o: /home/fatih/git/GuvenlikBekcisi/bekci/src/bekci/Plane.cpp
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/fatih/git/GuvenlikBekcisi/bekci/build/CMakeFiles $(CMAKE_PROGRESS_5)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object bekci/CMakeFiles/space.dir/Plane.cpp.o"
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build/bekci && /usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/space.dir/Plane.cpp.o -c /home/fatih/git/GuvenlikBekcisi/bekci/src/bekci/Plane.cpp
+
+bekci/CMakeFiles/space.dir/Plane.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/space.dir/Plane.cpp.i"
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build/bekci && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/fatih/git/GuvenlikBekcisi/bekci/src/bekci/Plane.cpp > CMakeFiles/space.dir/Plane.cpp.i
+
+bekci/CMakeFiles/space.dir/Plane.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/space.dir/Plane.cpp.s"
+	cd /home/fatih/git/GuvenlikBekcisi/bekci/build/bekci && /usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/fatih/git/GuvenlikBekcisi/bekci/src/bekci/Plane.cpp -o CMakeFiles/space.dir/Plane.cpp.s
+
+bekci/CMakeFiles/space.dir/Plane.cpp.o.requires:
+.PHONY : bekci/CMakeFiles/space.dir/Plane.cpp.o.requires
+
+bekci/CMakeFiles/space.dir/Plane.cpp.o.provides: bekci/CMakeFiles/space.dir/Plane.cpp.o.requires
+	$(MAKE) -f bekci/CMakeFiles/space.dir/build.make bekci/CMakeFiles/space.dir/Plane.cpp.o.provides.build
+.PHONY : bekci/CMakeFiles/space.dir/Plane.cpp.o.provides
+
+bekci/CMakeFiles/space.dir/Plane.cpp.o.provides.build: bekci/CMakeFiles/space.dir/Plane.cpp.o
+
 # Object files for target space
 space_OBJECTS = \
-"CMakeFiles/space.dir/space.cpp.o"
+"CMakeFiles/space.dir/space.cpp.o" \
+"CMakeFiles/space.dir/Point.cpp.o" \
+"CMakeFiles/space.dir/Sphere.cpp.o" \
+"CMakeFiles/space.dir/Vec3d.cpp.o" \
+"CMakeFiles/space.dir/Plane.cpp.o"
 
 # External object files for target space
 space_EXTERNAL_OBJECTS =
 
 /home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: bekci/CMakeFiles/space.dir/space.cpp.o
+/home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: bekci/CMakeFiles/space.dir/Point.cpp.o
+/home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: bekci/CMakeFiles/space.dir/Sphere.cpp.o
+/home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: bekci/CMakeFiles/space.dir/Vec3d.cpp.o
+/home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: bekci/CMakeFiles/space.dir/Plane.cpp.o
 /home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: bekci/CMakeFiles/space.dir/build.make
 /home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /opt/ros/indigo/lib/libroscpp.so
 /home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /usr/lib/x86_64-linux-gnu/libboost_signals.so
@@ -91,21 +188,26 @@ space_EXTERNAL_OBJECTS =
 /home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /opt/ros/indigo/lib/librosconsole_backend_interface.so
 /home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /usr/lib/liblog4cxx.so
 /home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /usr/lib/x86_64-linux-gnu/libboost_regex.so
-/home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /opt/ros/indigo/lib/libroscpp_serialization.so
-/home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /opt/ros/indigo/lib/librostime.so
-/home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
 /home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /opt/ros/indigo/lib/libxmlrpcpp.so
-/home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /opt/ros/indigo/lib/libcpp_common.so
-/home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /usr/lib/x86_64-linux-gnu/libboost_thread.so
-/home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /usr/lib/x86_64-linux-gnu/libpthread.so
-/home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so
 /home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /opt/ros/indigo/lib/libroslib.so
 /home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /opt/ros/indigo/lib/librospack.so
 /home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /usr/lib/x86_64-linux-gnu/libpython2.7.so
 /home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /usr/lib/x86_64-linux-gnu/libboost_filesystem.so
 /home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /usr/lib/x86_64-linux-gnu/libboost_program_options.so
-/home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /usr/lib/x86_64-linux-gnu/libboost_system.so
 /home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /usr/lib/x86_64-linux-gnu/libtinyxml.so
+/home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /opt/ros/indigo/lib/libgeometric_shapes.so
+/home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /opt/ros/indigo/lib/liboctomap.so
+/home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /opt/ros/indigo/lib/liboctomath.so
+/home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /opt/ros/indigo/lib/librandom_numbers.so
+/home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /opt/ros/indigo/lib/libroscpp_serialization.so
+/home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /opt/ros/indigo/lib/librostime.so
+/home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /usr/lib/x86_64-linux-gnu/libboost_date_time.so
+/home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /opt/ros/indigo/lib/libcpp_common.so
+/home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /usr/lib/x86_64-linux-gnu/libboost_system.so
+/home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /usr/lib/x86_64-linux-gnu/libboost_thread.so
+/home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /usr/lib/x86_64-linux-gnu/libpthread.so
+/home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so
+/home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: /home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/libpugi.so
 /home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space: bekci/CMakeFiles/space.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --red --bold "Linking CXX executable /home/fatih/git/GuvenlikBekcisi/bekci/devel/lib/bekci/space"
 	cd /home/fatih/git/GuvenlikBekcisi/bekci/build/bekci && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/space.dir/link.txt --verbose=$(VERBOSE)
@@ -115,6 +217,10 @@ bekci/CMakeFiles/space.dir/build: /home/fatih/git/GuvenlikBekcisi/bekci/devel/li
 .PHONY : bekci/CMakeFiles/space.dir/build
 
 bekci/CMakeFiles/space.dir/requires: bekci/CMakeFiles/space.dir/space.cpp.o.requires
+bekci/CMakeFiles/space.dir/requires: bekci/CMakeFiles/space.dir/Point.cpp.o.requires
+bekci/CMakeFiles/space.dir/requires: bekci/CMakeFiles/space.dir/Sphere.cpp.o.requires
+bekci/CMakeFiles/space.dir/requires: bekci/CMakeFiles/space.dir/Vec3d.cpp.o.requires
+bekci/CMakeFiles/space.dir/requires: bekci/CMakeFiles/space.dir/Plane.cpp.o.requires
 .PHONY : bekci/CMakeFiles/space.dir/requires
 
 bekci/CMakeFiles/space.dir/clean:
