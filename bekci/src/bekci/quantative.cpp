@@ -2,7 +2,7 @@
 #include <iostream>
 #include <map>
 #include <string>
-#include <sensor_msgs/JointState.h>
+#include <bekci/JointVelocity.h>
 #include <fstream>
 #include <vector>
 #include <ros/package.h>
@@ -60,7 +60,7 @@ int main(int argc,char** argv)
     ros::NodeHandle nh;
 
     string line;
-    ifstream inFile("/home/fatih/bekci/src/bekci/limits.txt");
+    ifstream inFile("~/src/bekci/inputs/limits.txt");
     string::size_type sz;
     string pack("bekci");
     string  a= ros::package::getPath(pack);
