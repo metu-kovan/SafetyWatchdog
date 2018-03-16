@@ -1,0 +1,4 @@
+uint16 DOF
+string[] names
+bool status
+int32 safetyLevel

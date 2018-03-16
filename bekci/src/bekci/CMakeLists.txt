@@ -46,13 +46,13 @@ add_executable(JointValueConverter JointValueConverter.cpp)
 add_executable(space space.cpp include/Point.cpp include/Sphere.cpp include/Vec3d.cpp include/Plane.cpp)
 add_executable(safety_level_check safety_level_check.cpp)
 add_executable(forward_calculator forward_calculator.cpp)
-
+add_executable(Joint_Velocity_Converter define_joints.cpp)
 
 link_directories(${catkin_LIBRARY_DIRS})
 target_link_libraries(limiter ${catkin_LIBRARIES} ${boost_LIBRARIES})
 target_link_libraries(JointValueConverter ${catkin_LIBRARIES})
 target_link_libraries(space ${catkin_LIBRARIES} ${boost_LIBRARIES} pugi)
-
+target_link_libraries(Joint_Velocity_Converter ${catkin_LIBRARIES})
 target_link_libraries(safety_level_check ${catkin_LIBRARIES} ${boost_LIBRARIES})
 target_link_libraries(forward_calculator ${catkin_LIBRARIES})
 ## Declare a C++ library
