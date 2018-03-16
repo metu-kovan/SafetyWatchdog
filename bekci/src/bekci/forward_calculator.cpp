@@ -168,6 +168,14 @@ void receive_values(const bekci::JointValue & msg) {
     send_msg.poses.push_back(pose_hold[4]);
     send_msg.poses.push_back(pose_hold[5]);
 
+    send_msg.radiuses.push_back(0.1);
+    send_msg.radiuses.push_back(0.1);
+    send_msg.radiuses.push_back(0.1);
+    send_msg.radiuses.push_back(0.1);
+    send_msg.radiuses.push_back(0.1);
+    send_msg.radiuses.push_back(0.1);
+
+
     pubPtr->publish(send_msg);
 
     

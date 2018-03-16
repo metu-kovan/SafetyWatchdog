@@ -2,13 +2,19 @@
 <group ns="guvenlik_bekcisi">
     <node
         pkg="bekci"
-        type="limiter"
-        name="quantative_velocity_limiter"
+        type="JointValueConverter"
+        name="refine_joint_values"
+        />
+    <node
+        pkg="bekci"
+        type="forward_calculator"
+        name="calculates forwards"
         />
     <node
         pkg="bekci"
         type="space"
         name="safe_space_limiter"
+        arg="$(find bekci)/input/space_limits.xml"
         />
 </group>
 </launch>

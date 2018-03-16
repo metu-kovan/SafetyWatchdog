@@ -53,10 +53,30 @@ void Plane::print() {
     std::cout<<" Point on plane ";
     p.print();
 }
-/*
-int Plane::checkSphereStatus() { // returns 0 if not even close, returns 1 if sphere is in warning margin returns 2 if sphere is touching the boundary
-    int status = 0;
 
+/*
+ returns 0 if not even close, 
+ returns 1 if sphere is in warning margin 
+ returns 2 if sphere is touching the boundary, 
+ returns 3 if sphere passed the boundary 
+
+*/
+
+int Plane::checkSphereStatus(Sphere & sp,double mar) { 
+    int status = 0;
+    Vec3d s_to_p = p-sp.p;
+    //s_to_p.print();
+    //normal.print();
+    double dot_res = s_to_p.dot(normal);
+    //std::cout<<"fabs "<<fabs(dot_res)<<" r+m "<<sp.r+mar<<std::endl;
+    if (dot_res>0) {
+        status = 3;
+    }
+    else if(fabs(dot_res)<=sp.r) {
+        status = 2;
+    }
+    else if(fabs(dot_res)>sp.r && fabs(dot_res)<=sp.r+mar) {
+        status = 1;
+    }    
     return status;
 }
-*/

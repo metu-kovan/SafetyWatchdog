@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 2.8.3)
 project(bekci)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-# add_compile_options(-std=c++11)
+
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
@@ -12,7 +12,7 @@ find_package(catkin REQUIRED COMPONENTS genmsg std_msgs message_generation senso
 ## System dependencies are found with CMake's conventions
 find_package(Boost REQUIRED COMPONENTS system )
 add_compile_options(-std=c++11)
-add_message_files(FILES JointValue.msg JointPose.msg Pose.msg)
+add_message_files(FILES SpaceSafetyStatus.msg JointValue.msg JointPose.msg Pose.msg )
 generate_messages(DEPENDENCIES std_msgs)
 
 
@@ -31,7 +31,7 @@ include_directories(
  ${Boost_INCLUDE_DIRS}
 )
 
-add_library(pugi pugixml.cpp)
+add_library(pugi include/pugi/pugixml.cpp)
 
 catkin_package(
 	
@@ -43,7 +43,7 @@ catkin_package(
 
 add_executable(limiter quantative.cpp)
 add_executable(JointValueConverter JointValueConverter.cpp)
-add_executable(space space.cpp Point.cpp Sphere.cpp Vec3d.cpp Plane.cpp)
+add_executable(space space.cpp include/Point.cpp include/Sphere.cpp include/Vec3d.cpp include/Plane.cpp)
 add_executable(safety_level_check safety_level_check.cpp)
 add_executable(forward_calculator forward_calculator.cpp)
 

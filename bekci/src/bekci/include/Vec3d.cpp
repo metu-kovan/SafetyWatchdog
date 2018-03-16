@@ -30,3 +30,25 @@ Vec3d& Vec3d::operator=(const Vec3d & other){
 	this->z = other.z;
 	return *this;
 }
+
+Vec3d Vec3d::operator/(double  num){
+	Vec3d ret;
+	ret.x = this->x/num;
+	ret.y = this->y/num;
+	ret.z = this->z/num;
+
+	return ret;
+}
+
+void Vec3d::normalize(){
+	double len = sqrt(pow(x,2)+ pow(y,2) + pow(z,2));
+	(*this)= (*this)/len;
+
+}
+double Vec3d::dot(const Vec3d& other) {
+	double sum = 0;
+	sum += this->x*other.x;
+	sum += this->y*other.y;
+	sum += this->z*other.z;
+	return sum;
+}

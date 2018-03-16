@@ -3,6 +3,7 @@
 
 #include "Point.h"
 #include "Vec3d.h"
+#include "Sphere.h"
 
 // Plane is created by a point and a vector
 class Plane {
@@ -12,7 +13,7 @@ class Plane {
         Point p;
 
         Plane();
-        ~Plane();
+
         Plane(double & n_x, double & n_y, double & n_z, double & p_x, double & p_y, double & p_z) ;
         Plane(double & n_x, double & n_y, double & n_z, Point & _p);
         Plane(Vec3d & _n , double & p_x, double & p_y, double & p_z);
@@ -25,13 +26,8 @@ class Plane {
         
         Plane & operator=(const Plane& other);
         void print();
-        /*
-        int checkSphereStatus { // returns 0 if not even close, returns 1 if sphere is in warning margin returns 2 if sphere is touching the boundary
-            int status = 0;
-
-            return status;
-        }*/
-
+        
+        int checkSphereStatus(Sphere & sp,double mar);
     private:
         
 
