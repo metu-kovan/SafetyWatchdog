@@ -1,52 +1,41 @@
 #!/usr/bin/env python
 import RPi.GPIO as GPIO
-from gpiozero import Buzzer
+from hardware import Led
 import time
 import rospy
 import subprocess
 #import os
-#from std_msgs.msg import String
+from box_module.msg import WarningSignal
 
 #global variables for pins
 openButton = 18
 levelOneButton = 23
 levelTwoButton = 24
 
-levelOneFlag = False
-levelTwoFlag = False
-
-openLed = 17
-levelOneLed = 27
-levelTwoLed = 22
+openLedPin = 17
+levelOneLedPin = 27
+levelTwoLedPin = 22
 
 buzzerPin = 4
 
-#function for controlling pins
-def openLedFunc(pinNo):
-    GPIO.output(pinNo, GPIO.HIGH)
-def closeLedFunc(pinNo):
-    GPIO.output(pinNo, GPIO.LOW)
-
 #main function for setting led and button
 def setup():
+    global openLed
+    global levelOneLed
+    global levelTwoLed
+
     GPIO.setmode(GPIO.BCM)
     GPIO.setwarnings(False)
-    GPIO.setup(openLed,GPIO.OUT)
-    GPIO.setup(levelOneLed,GPIO.OUT)
-    GPIO.setup(levelTwoLed,GPIO.OUT)
+
+    openLed = Led(openLedPin)
+    levelOneLed = Led(levelOneLedPin)
+    levelTwoLed = Led(levelTwoLedPin)
 
     GPIO.setup(openButton, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     GPIO.setup(levelOneButton, GPIO.IN, pull_up_down=GPIO.PUD_UP)
     GPIO.setup(levelTwoButton, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
     GPIO.add_event_detect(openButton, GPIO.FALLING, callback=openDriver, bouncetime=300)
-
-    #set all closed at default
-    GPIO.output(openLed, GPIO.LOW)
-    GPIO.output(levelOneLed, GPIO.LOW)
-    GPIO.output(levelTwoLed, GPIO.LOW)
-
-    buzzer = Buzzer(buzzerPin)
 
     #filePublisher = rospy.Publisher('fileOpener', String, queue_size=10)
     #rospy.init_node('button_talker', anonymous=True)
@@ -55,44 +44,40 @@ def setup():
 
 #open button function
 def openDriver(sub0):
-    #driverProcess = subprocess.Popen(["roslaunch box_module endUser.launch"], shell=True, stdout=subprocess.PIPE)
-    #filePublisher.publish("driver")
     print "open buttons"
-    openLedFunc(openLed) #flash led
-    #activate button
-    GPIO.add_event_detect(levelOneButton, GPIO.FALLING, callback=levelOneSetup, bouncetime=300)
-    GPIO.add_event_detect(levelTwoButton, GPIO.FALLING, callback=levelTwoSetup, bouncetime=300)
+    if openLed.flag == False:
+        driverProcess = subprocess.Popen(["roslaunch ur_modern_driver ur5_bringup.launch robot_ip:= 10.0.0.2"], shell=True, stdout=subprocess.PIPE)
+        openLed.open()
+        #activate button
+        GPIO.add_event_detect(levelOneButton, GPIO.FALLING, callback=levelOneSetup, bouncetime=300)
+        GPIO.add_event_detect(levelTwoButton, GPIO.FALLING, callback=levelTwoSetup, bouncetime=300)
+    else:
+        driverProcess.terminate()
 
 #security level callback functions
 def levelOneSetup(sub1):
-    global levelOneFlag
     print "level one"
-    if levelOneFlag == False:
+    if levelOneLed.flag == False:
         print "inside 1"
-        openLedFunc(levelOneLed)
-        #levelOneProcess = subprocess.Popen(["roslaunch box_module endUser.launch"], shell=True, stdout=subprocess.PIPE)
+        levelOneLed.open()
+        levelOneProcess = subprocess.Popen(["roslaunch bekci bekci.launch"], shell=True, stdout=subprocess.PIPE)
         #os.system("roslaunch box_module endUser.launch")
-        #filePublisher.publish("levelone")
-        levelOneFlag = True
     else:
         print "stop 1"
-        closeLedFunc(levelOneLed)
-        levelOneFlag = False
+        #levelOneProcess.terminate()
+        levelOneLed.close()
 
 def levelTwoSetup(sub2):
     global levelTwoFlag
     print "level two"
-    if levelTwoFlag == False:
+    if levelTwoLed.flag == False:
         print "inside 2"
-        #levelTwoProcess = subprocess.Popen(["roslaunch box_module endUser.launch"], shell=True, stdout=subprocess.PIPE)
-        #os.system("roslaunch box_module endUser.launch")
-        #filePublisher.publish("leveltwo")
-        openLedFunc(levelTwoLed)
-        levelTwoFlag = True
+        levelTwoProcess = subprocess.Popen(["roslaunch box_module endUser.launch"], shell=True, stdout=subprocess.PIPE)
+        levelTwoLed.open()
     else:
         print "stop 2"
-        closeLedFunc(levelTwoLed)
-        levelTwoFlag = False
+        #levelTwoProcess.terminate()
+        levelTwoLed.close()
 
 #main while loop
 try:

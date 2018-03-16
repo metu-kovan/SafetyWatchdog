@@ -1,9 +1,0 @@
-<launch>
-<group ns="guvenlik_bekcisi">
-    <node name="end user py file"
-        pkg="box_module"
-        type="end_user.py"
-	output="screen"
-        />
-</group>
-</launch>

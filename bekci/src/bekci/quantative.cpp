@@ -81,7 +81,7 @@ int main(int argc,char** argv)
     ROS_INFO_STREAM("2");
     ros::Rate rate(10);
 
-    ros::Subscriber sub_state = nh.subscribe("/converted_joint_velociti", 100, &limiter);
+    ros::Subscriber sub_state = nh.subscribe("/converted_joint_velocities", 100, &limiter);
     ros::Subscriber sub_goal = nh.subscribe("/follow_joint_trajectory/goal",1000,&goalIDKeeper);
 
     pub= new ros::Publisher(nh.advertise<actionlib_msgs::GoalID>("/follow_joint_trajectory/cancel",10));

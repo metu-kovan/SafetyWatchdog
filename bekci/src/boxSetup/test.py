@@ -1,8 +1,5 @@
 import RPi.GPIO as GPIO
 import time
-import rospy
-import os
-
 
 openButton = 18
 levelOneButton = 23
@@ -14,6 +11,8 @@ levelTwoFlag = False
 openLed = 17
 levelOneLed = 27
 levelTwoLed = 22
+
+buzzer = 18
 
 def high(pinNo):
     GPIO.output(pinNo, GPIO.HIGH)
@@ -38,33 +37,37 @@ def setup():
     GPIO.output(levelOneLed, GPIO.LOW)
     GPIO.output(levelTwoLed, GPIO.LOW)
 
+#    GPIO.setup(buzzer, GPIO.OUT)
+#    GPIO.output(buzzer, GPIO.HIGH)
     print "setup done"
 
-def openDriver(sub0):
+def openDriver(channel1):
     print "open buttons"
     high(openLed)
     GPIO.add_event_detect(levelOneButton, GPIO.FALLING, callback=levelOneSetup, bouncetime=300)
     GPIO.add_event_detect(levelTwoButton, GPIO.FALLING, callback=levelTwoSetup, bouncetime=300)
+#import roslaunch
+#package = 'rqt_gui' executable = 'rqt_gui' node = roslaunch.core.Node(package, executable)
+#launch = roslaunch.scriptapi.ROSLaunch() launch.start()
+#process = launch.launch(node) print process.is_alive() process.stop()
 
-def levelOneSetup(sub1):
+def levelOneSetup(chanenl2):
     global levelOneFlag
     print "level one"
     if levelOneFlag == False:
         print "inside 1"
         high(levelOneLed)
-        os.system("roslaunch box_module endUser.launch")
         levelOneFlag = True
     else:
         print "stop 1"
         low(levelOneLed)
         levelOneFlag = False
 
-def levelTwoSetup(sub2):
+def levelTwoSetup(sub3):
     global levelTwoFlag
     print "level two"
     if levelTwoFlag == False:
         print "inside 2"
-        os.system("roslaunch box_module endUser.launch")
         high(levelTwoLed)
         levelTwoFlag = True
     else:

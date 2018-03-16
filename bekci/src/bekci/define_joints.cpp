@@ -11,9 +11,6 @@ using namespace std;
 ros::Publisher *pubJoint;
 map<string,float> ordered_q;
 
-
-using namespace std;
-
 void turnerCallback(const sensor_msgs::JointState & msg) {
     bekci::JointVelocity converted_msg;
     for(int i=0;i<6;i++) {
