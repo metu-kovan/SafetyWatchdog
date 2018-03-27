@@ -13,7 +13,6 @@ using namespace std;
 //#define UR5_PARAMS
 
 const double d1 =  0.089159;
-const double al1= 1.570796327;
 const double a2 = -0.42500;
 const double a3 = -0.39225;
 const double d4 =  0.10915;
@@ -185,13 +184,13 @@ void receive_values(const bekci::JointValue & msg) {
 int main(int argc, char  *argv[])
 {
 
-    ros::init(argc,argv,"forward_calculator");
+    ros::init(argc,argv,"ForwardCalculator");
 
     ros::NodeHandle nh;
     pose_hold.resize(6);
     q_values.resize(6);
-    ros::Subscriber sub_state = nh.subscribe("/converted_joint_values", 1000, &receive_values);
-    pubPtr = new ros::Publisher(nh.advertise<bekci::JointPose>("/robot_pose_value",1000));
+    ros::Subscriber sub_state = nh.subscribe("/joint_angle", 1000, &receive_values);
+    pubPtr = new ros::Publisher(nh.advertise<bekci::JointPose>("/robot_joint_pose",1000));
     while(ros::ok()) {
         ros::spinOnce();    
     }

@@ -13,7 +13,7 @@
 #include <map>
 #include <string>
 
-#include <fstream>
+
 #include <vector>
 #include <ros/package.h>
 #include <boost/algorithm/string.hpp>
@@ -120,7 +120,7 @@ int main(int argc,char** argv) {
     plane_holder[0].normal.normalize();
     plane_holder[0].print();
     ros::Rate rate(10);
-    ros::Subscriber sub_state = nh.subscribe("/robot_pose_value", 100, &robotPoseReceiver);
+    ros::Subscriber sub_state = nh.subscribe("/robot_joint_pose", 100, &robotPoseReceiver);
     ros::Subscriber sub_goal = nh.subscribe("/follow_joint_trajectory/goal",1000,&goalIDKeeper);
     
     pub= new ros::Publisher(nh.advertise<actionlib_msgs::GoalID>("/follow_joint_trajectory/cancel",10));

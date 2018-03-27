@@ -26,7 +26,7 @@ void goalIDKeeper(const control_msgs::FollowJointTrajectoryActionGoal & msg) {
 }
 
 int main(int argc,char** argv) {
-    ros::init(argc, argv, "quantative_limiter");
+    ros::init(argc, argv, "SafetyStatusDecider");
     ros::NodeHandle nh;
  
 }

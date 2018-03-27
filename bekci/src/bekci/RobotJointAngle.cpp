@@ -41,10 +41,10 @@ int main(int argc, char  *argv[])
     ordered_q["wrist_1_joint"] = 0;
     ordered_q["wrist_2_joint"] = 0;
     ordered_q["wrist_3_joint"] = 0;
-    ros::init(argc,argv,"Joint_Value_Converter");
+    ros::init(argc,argv,"RobotJointAngle");
     ros::NodeHandle nh;
     ros::Subscriber sub_state = nh.subscribe("/joint_states", 1000, &turner);
-    pubPtr = new ros::Publisher(nh.advertise<bekci::JointValue>("/converted_joint_values",1000));
+    pubPtr = new ros::Publisher(nh.advertise<bekci::JointValue>("/joint_angle",1000));
     while(ros::ok()) {
         ros::spinOnce();    
     }

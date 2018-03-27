@@ -41,20 +41,20 @@ catkin_package(
     LIBRARIES pugi
 )
 
-add_executable(limiter quantative.cpp)
-add_executable(JointValueConverter JointValueConverter.cpp)
-add_executable(space space.cpp include/Point.cpp include/Sphere.cpp include/Vec3d.cpp include/Plane.cpp)
-add_executable(safety_level_check safety_level_check.cpp)
-add_executable(forward_calculator forward_calculator.cpp)
-add_executable(Joint_Velocity_Converter define_joints.cpp)
+add_executable(QuantativeController QuantativeController.cpp)
+add_executable(RobotJointAngle RobotJointAngle.cpp)
+add_executable(SpaceController SpaceController.cpp include/Point.cpp include/Sphere.cpp include/Vec3d.cpp include/Plane.cpp)
+add_executable(SafetyStatusDecider SafetyStatusDecider.cpp)
+add_executable(ForwardCalculator ForwardCalculator.cpp)
+add_executable(RobotJointVelocity RobotJointVelocity.cpp)
 
 link_directories(${catkin_LIBRARY_DIRS})
-target_link_libraries(limiter ${catkin_LIBRARIES} ${boost_LIBRARIES})
-target_link_libraries(JointValueConverter ${catkin_LIBRARIES})
-target_link_libraries(space ${catkin_LIBRARIES} ${boost_LIBRARIES} pugi)
-target_link_libraries(Joint_Velocity_Converter ${catkin_LIBRARIES})
-target_link_libraries(safety_level_check ${catkin_LIBRARIES} ${boost_LIBRARIES})
-target_link_libraries(forward_calculator ${catkin_LIBRARIES})
+target_link_libraries(QuantativeController ${catkin_LIBRARIES} ${boost_LIBRARIES})
+target_link_libraries(RobotJointAngle ${catkin_LIBRARIES})
+target_link_libraries(SpaceController ${catkin_LIBRARIES} ${boost_LIBRARIES} pugi)
+target_link_libraries(RobotJointVelocity ${catkin_LIBRARIES})
+target_link_libraries(SafetyStatusDecider ${catkin_LIBRARIES} ${boost_LIBRARIES})
+target_link_libraries(ForwardCalculator ${catkin_LIBRARIES})
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/bekci.cpp
