@@ -12,7 +12,9 @@ find_package(catkin REQUIRED COMPONENTS genmsg std_msgs geometry_msgs message_ge
 ## System dependencies are found with CMake's conventions
 find_package(Boost REQUIRED COMPONENTS system )
 add_compile_options(-std=c++11)
+
 add_message_files(FILES SpaceSafetyStatus.msg JointValue.msg JointPose.msg Pose.msg QuantativeSafetyStatus.msg JointVelocity.msg)
+
 generate_messages(DEPENDENCIES std_msgs)
 
 
@@ -56,12 +58,14 @@ add_dependencies(RobotJointAngle  bekci_generate_messages_cpp)
 add_dependencies(SafetyStatusDecider bekci_generate_messages_cpp)
 
 link_directories(${catkin_LIBRARY_DIRS})
+
 target_link_libraries(QuantativeController ${catkin_LIBRARIES} ${boost_LIBRARIES} pugi)
 target_link_libraries(RobotJointAngle ${catkin_LIBRARIES})
 target_link_libraries(SpaceController ${catkin_LIBRARIES} ${boost_LIBRARIES} pugi)
 target_link_libraries(RobotJointVelocity ${catkin_LIBRARIES})
 target_link_libraries(SafetyStatusDecider ${catkin_LIBRARIES} ${boost_LIBRARIES})
 target_link_libraries(ForwardCalculator ${catkin_LIBRARIES})
+
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/bekci.cpp
