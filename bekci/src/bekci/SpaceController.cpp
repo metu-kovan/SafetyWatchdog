@@ -10,6 +10,7 @@
 #include <iostream>
 #include <bekci/Pose.h>
 #include <bekci/JointPose.h>
+#include <bekci/SpaceSafetyStatus.h>
 #include <map>
 #include <string>
 
@@ -17,8 +18,7 @@
 #include <vector>
 #include <ros/package.h>
 #include <boost/algorithm/string.hpp>
-#include <control_msgs/FollowJointTrajectoryActionGoal.h>
-#include <actionlib_msgs/GoalID.h>
+
 #include <stdlib.h>
 using namespace std;
 
@@ -32,29 +32,30 @@ double margin;
 
 
 
-void goalIDKeeper(const control_msgs::FollowJointTrajectoryActionGoal & msg) {
-    current_goal = msg.goal_id.id;
-}
-
 
 
 void robotPoseReceiver(const bekci::JointPose & in_msg) {
+    bekci::SpaceSafetyStatus out_msg;
+    out_msg.sphere_status.resize(6);
     for(int i=0;i<in_msg.DOF;i++) {
         sphere_holder[i].setValues (in_msg.radiuses[i],in_msg.poses[i]);
         
     }
 
-    int status;
+    int current_status;
     int old_status;
     int sp;
     for(int i=0;i<plane_holder.size();i++) {
         old_status = 0;
         sp = 0;
-        for(int k=0;k<sphere_holder.size();k++) {
+        for(int k=1;k<sphere_holder.size();k++) {
 
-            status = plane_holder[i].checkSphereStatus(sphere_holder[k],margin);
-            if(status> old_status) {
-                old_status = status;
+            current_status = plane_holder[i].checkSphereStatus(sphere_holder[k],margin);
+            if(sphere_holder[k].status<current_status) {
+                sphere_holder[k].status = current_status;
+            }
+            if(current_status> old_status) {
+                old_status = current_status;
                 sp = k;
             }
             //cout<<"For plane "<<i<< " Sphere "<<k<<"in the status of "<<status<<endl;
@@ -64,7 +65,10 @@ void robotPoseReceiver(const bekci::JointPose & in_msg) {
         }
         
     }
-
+    for(int i=0;i<sphere_holder.size();i++) {
+        out_msg.sphere_status[i] = sphere_holder[i].status;
+    }
+    pub->publish(out_msg);
 
 }
 
@@ -92,7 +96,7 @@ int main(int argc,char** argv) {
 
     pugi::xml_document doc;
 
-    pugi::xml_parse_result result = doc.load_file(argv[2]);
+    pugi::xml_parse_result result = doc.load_file(argv[1]);
 
     
     margin = doc.child("Planes").attribute("WarningM").as_float();
@@ -121,9 +125,9 @@ int main(int argc,char** argv) {
     plane_holder[0].print();
     ros::Rate rate(10);
     ros::Subscriber sub_state = nh.subscribe("/robot_joint_pose", 100, &robotPoseReceiver);
-    ros::Subscriber sub_goal = nh.subscribe("/follow_joint_trajectory/goal",1000,&goalIDKeeper);
+
     
-    pub= new ros::Publisher(nh.advertise<actionlib_msgs::GoalID>("/follow_joint_trajectory/cancel",10));
+    pub= new ros::Publisher(nh.advertise<bekci::SpaceSafetyStatus>("/space_safety",10));
     while(ros::ok()) {
 
         ros::spinOnce();

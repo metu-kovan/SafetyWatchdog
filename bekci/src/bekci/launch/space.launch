@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<launch>
+<group ns="guvenlik_bekcisi">
+    <node
+        pkg="bekci"
+        type="RobotJointAngle"
+        name="RobotJointAngle"
+        />
+    <node
+        pkg="bekci"
+        type="ForwardCalculator"
+        name="ForwardCalculator"
+        />
+    <node
+        pkg="bekci"
+        type="SpaceController"
+        name="SpaceController"
+
+        args="$(find bekci)/input/space_limits.xml"
+        />
+</group>
+</launch>

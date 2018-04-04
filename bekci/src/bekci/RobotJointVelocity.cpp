@@ -57,7 +57,7 @@ int main(int argc, char  *argv[])
     }
 
 
-   delete pubJoint;
+    delete pubJoint;
 
     return 0;
 

@@ -1,0 +1,2 @@
+set(bekci_MESSAGE_FILES "/home/fatih/git/GuvenlikBekcisi/bekci/src/bekci/msg/SpaceSafetyStatus.msg;/home/fatih/git/GuvenlikBekcisi/bekci/src/bekci/msg/JointValue.msg;/home/fatih/git/GuvenlikBekcisi/bekci/src/bekci/msg/JointPose.msg;/home/fatih/git/GuvenlikBekcisi/bekci/src/bekci/msg/Pose.msg;/home/fatih/git/GuvenlikBekcisi/bekci/src/bekci/msg/QuantativeSafetyStatus.msg;/home/fatih/git/GuvenlikBekcisi/bekci/src/bekci/msg/JointVelocity.msg")
+set(bekci_SERVICE_FILES "")

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<launch>
+
+  <include file="$(find bekci)/launch/quantative.launch">
+  </include>
+  <include file="$(find bekci)/launch/space.launch">
+  </include>
+
+  <group ns="guvenlik_bekcisi">
+    <node
+        pkg="bekci"
+        type="SafetyStatusDecider"
+        name="SafetyStatusDecider"
+        output="screen"
+        args="real"
+        />
+</group>
+
+</launch>

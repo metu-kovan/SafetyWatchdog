@@ -7,6 +7,7 @@ class Sphere {
     public:
         double r;
         Point p;
+        char status;
         Sphere(){}
         Sphere(double & _r, double & _x, double & _y, double & _z);
         Sphere(double  _r, Point &  _p);

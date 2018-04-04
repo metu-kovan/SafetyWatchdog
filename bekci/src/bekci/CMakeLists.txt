@@ -7,12 +7,12 @@ project(bekci)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS genmsg std_msgs message_generation sensor_msgs control_msgs  roscpp rospack roslib geometric_shapes)
+find_package(catkin REQUIRED COMPONENTS genmsg std_msgs geometry_msgs message_generation sensor_msgs control_msgs  roscpp rospack roslib geometric_shapes)
 #rosbuild_add_boost_directories()
 ## System dependencies are found with CMake's conventions
 find_package(Boost REQUIRED COMPONENTS system )
 add_compile_options(-std=c++11)
-add_message_files(FILES SpaceSafetyStatus.msg JointValue.msg JointPose.msg Pose.msg )
+add_message_files(FILES SpaceSafetyStatus.msg JointValue.msg JointPose.msg Pose.msg QuantativeSafetyStatus.msg JointVelocity.msg)
 generate_messages(DEPENDENCIES std_msgs)
 
 
@@ -41,15 +41,22 @@ catkin_package(
     LIBRARIES pugi
 )
 
-add_executable(QuantativeController QuantativeController.cpp)
+add_executable(QuantativeController QuantativeController.cpp include/JointLimits.cpp)
 add_executable(RobotJointAngle RobotJointAngle.cpp)
 add_executable(SpaceController SpaceController.cpp include/Point.cpp include/Sphere.cpp include/Vec3d.cpp include/Plane.cpp)
 add_executable(SafetyStatusDecider SafetyStatusDecider.cpp)
 add_executable(ForwardCalculator ForwardCalculator.cpp)
 add_executable(RobotJointVelocity RobotJointVelocity.cpp)
 
+add_dependencies(RobotJointVelocity bekci_generate_messages_cpp)
+add_dependencies(QuantativeController bekci_generate_messages_cpp)
+add_dependencies(ForwardCalculator bekci_generate_messages_cpp)
+add_dependencies(SpaceController bekci_generate_messages_cpp)
+add_dependencies(RobotJointAngle  bekci_generate_messages_cpp)
+add_dependencies(SafetyStatusDecider bekci_generate_messages_cpp)
+
 link_directories(${catkin_LIBRARY_DIRS})
-target_link_libraries(QuantativeController ${catkin_LIBRARIES} ${boost_LIBRARIES})
+target_link_libraries(QuantativeController ${catkin_LIBRARIES} ${boost_LIBRARIES} pugi)
 target_link_libraries(RobotJointAngle ${catkin_LIBRARIES})
 target_link_libraries(SpaceController ${catkin_LIBRARIES} ${boost_LIBRARIES} pugi)
 target_link_libraries(RobotJointVelocity ${catkin_LIBRARIES})

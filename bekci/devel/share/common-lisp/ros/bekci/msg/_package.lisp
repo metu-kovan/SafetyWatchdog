@@ -1,0 +1,17 @@
+(cl:defpackage bekci-msg
+  (:use )
+  (:export
+   "<JOINTVALUE>"
+   "JOINTVALUE"
+   "<JOINTVELOCITY>"
+   "JOINTVELOCITY"
+   "<POSE>"
+   "POSE"
+   "<QUANTATIVESAFETYSTATUS>"
+   "QUANTATIVESAFETYSTATUS"
+   "<JOINTPOSE>"
+   "JOINTPOSE"
+   "<SPACESAFETYSTATUS>"
+   "SPACESAFETYSTATUS"
+  ))
+

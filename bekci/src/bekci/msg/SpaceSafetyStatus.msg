@@ -1,1 +1,1 @@
-int8  state
+int8[]  sphere_status

@@ -1,18 +1,22 @@
-<Planes Count="4" WarningM = "0.1">
+<Planes Count="5" WarningM = "0.1">
 	<Plane id="1">
 		<Normal	x="1" y="0" z="0"></Normal>
-		<Point	x="-0.5" y="0" z="0"></Point>
+		<Point	x="-0.7" y="0" z="0"></Point>
 	</Plane>
 	<Plane id="2">
 		<Normal	x="-1" y="0" z="0"></Normal>
-		<Point	x="0.5" y="0" z="0"></Point>
+		<Point	x="0.7" y="0" z="0"></Point>
 	</Plane>
 	<Plane id="3">
 		<Normal	x="0" y="1" z="0"></Normal>
-		<Point	x="0" y="-0.5" z="0"></Point>
+		<Point	x="0" y="-0.7" z="0"></Point>
 	</Plane>
 	<Plane id="4">
 		<Normal	x="0" y="-1" z="0"></Normal>
-		<Point	x="0" y="0.5" z="0"></Point>
+		<Point	x="0" y="0.7" z="0"></Point>
+	</Plane>
+	<Plane id="5">
+		<Normal	x="0" y="0" z="1"></Normal>
+		<Point	x="0" y="0" z="0"></Point>
 	</Plane>
 </Planes>

@@ -1,7 +1,7 @@
-<Joints Count="6" WarningM = "0.1">
-	<Joint Name="elbow_joint" SpeedLimit="0.5"></Joint>
-	<Joint Name="shoulder_lift_joint" SpeedLimit="0.5"></Joint>
+<Joints Count="6" WarningM = "0.2">
 	<Joint Name="shoulder_pan_joint" SpeedLimit="0.5"></Joint>
+	<Joint Name="shoulder_lift_joint" SpeedLimit="0.5"></Joint>
+	<Joint Name="elbow_joint" SpeedLimit="0.5"></Joint>
 	<Joint Name="wrist_1_joint" SpeedLimit="0.5"></Joint>
 	<Joint Name="wrist_2_joint" SpeedLimit="0.5"></Joint>
 	<Joint Name="wrist_3_joint" SpeedLimit="0.5"></Joint>
