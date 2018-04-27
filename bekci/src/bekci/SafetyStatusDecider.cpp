@@ -35,7 +35,7 @@ void quantativeCallback(const bekci::QuantativeSafetyStatus & in_msg) {
     current_quantative = in_msg;
     for(int i=0;i<in_msg.joint_status.size();i++) {
     	if(in_msg.joint_status[i]==2) {
-    		ROS_INFO_STREAM("BOY you are too fast "<<i);
+    		ROS_INFO_STREAM("BOY you are too fast "<< i);
     		cancel.id = current_goal.id;
     		pub->publish(cancel);
     	}

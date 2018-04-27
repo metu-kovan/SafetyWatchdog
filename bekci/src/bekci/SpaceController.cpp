@@ -6,6 +6,7 @@
 #include "Sphere.h"
 #include "Vec3d.h"
 #include "Plane.h"
+#include "Box.h"
 
 #include <iostream>
 #include <bekci/Pose.h>
@@ -26,7 +27,7 @@ using namespace std;
 ros::Publisher* pub; 
 string current_goal;
 vector<Sphere> sphere_holder;
-vector<Plane> plane_holder;
+vector<Box> box_holder;
 double margin;
 
 
@@ -45,12 +46,12 @@ void robotPoseReceiver(const bekci::JointPose & in_msg) {
     int current_status;
     int old_status;
     int sp;
-    for(int i=0;i<plane_holder.size();i++) {
+    for(int i=0;i<box_holder.size();i++) {
         old_status = 0;
         sp = 0;
         for(int k=1;k<sphere_holder.size();k++) {
 
-            current_status = plane_holder[i].checkSphereStatus(sphere_holder[k],margin);
+            current_status = box_holder[i].checkSphereStatus(sphere_holder[k],margin);
             if(sphere_holder[k].status<current_status) {
                 sphere_holder[k].status = current_status;
             }
@@ -58,10 +59,11 @@ void robotPoseReceiver(const bekci::JointPose & in_msg) {
                 old_status = current_status;
                 sp = k;
             }
+            cout<<current_status<<endl;
             //cout<<"For plane "<<i<< " Sphere "<<k<<"in the status of "<<status<<endl;
         }
         if(old_status>0) {
-            ROS_INFO_STREAM("For Plane "<<i<<" higshest danger from sphere "<<sp<<"with status "<<old_status );    
+            ROS_INFO_STREAM("For Box "<<i<<" higshest danger from sphere "<<sp<<"with status "<<old_status );    
         }
         
     }
@@ -83,6 +85,7 @@ int main(int argc,char** argv) {
     double p_x;
     double p_y;
     double p_z;
+    int p_count;
     //ifstream inFile("inputs/space_limits.xml");
     Point dummy(0,0,0);
     sphere_holder.resize(6);
@@ -99,30 +102,36 @@ int main(int argc,char** argv) {
     pugi::xml_parse_result result = doc.load_file(argv[1]);
 
     
-    margin = doc.child("Planes").attribute("WarningM").as_float();
-    for (pugi::xml_node plane = doc.child("Planes").child("Plane"); plane; plane = plane.next_sibling("Plane"))
+    margin = doc.child("Boxes").attribute("WarningM").as_float();
+    for (pugi::xml_node box = doc.child("Boxes").child("Box"); box; box = box.next_sibling("Box"))
     {
+        vector<Plane> plane_holder;
+        p_count = box.attribute("PlaneCount").as_int();
+        for(pugi::xml_node plane = box.child("Plane"); plane; plane = plane.next_sibling("Plane") ) {
+            n_x = plane.child("Normal").attribute("x").as_float();
+            n_y = plane.child("Normal").attribute("y").as_float();
+            n_z = plane.child("Normal").attribute("z").as_float();
 
-        n_x = plane.child("Normal").attribute("x").as_float();
-        n_y = plane.child("Normal").attribute("y").as_float();
-        n_z = plane.child("Normal").attribute("z").as_float();
+            p_x = plane.child("Point").attribute("x").as_float();
+            p_y = plane.child("Point").attribute("y").as_float();
+            p_z = plane.child("Point").attribute("z").as_float();
+            Plane temp(n_x, n_y, n_z, p_x, p_y, p_z);
+            temp.normal.normalize();
+            plane_holder.push_back(temp);
+        }
+        
+        Box temp_b(plane_holder);
+        box_holder.push_back(temp_b);
 
-        p_x = plane.child("Point").attribute("x").as_float();
-        p_y = plane.child("Point").attribute("y").as_float();
-        p_z = plane.child("Point").attribute("z").as_float();
-
-        Plane temp(n_x, n_y, n_z, p_x, p_y, p_z);
-        temp.normal.normalize();
-        plane_holder.push_back(temp);
+        
     }
 
     
 
-    for(int i = 0;i<4;i++) {
-        plane_holder[i].print();
+    for(int i = 0;i<box_holder.size();i++) {
+        box_holder[i].print();
     }
-    plane_holder[0].normal.normalize();
-    plane_holder[0].print();
+    
     ros::Rate rate(10);
     ros::Subscriber sub_state = nh.subscribe("/robot_joint_pose", 100, &robotPoseReceiver);
 

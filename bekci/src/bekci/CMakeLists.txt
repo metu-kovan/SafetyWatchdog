@@ -45,7 +45,7 @@ catkin_package(
 
 add_executable(QuantativeController QuantativeController.cpp include/JointLimits.cpp)
 add_executable(RobotJointAngle RobotJointAngle.cpp)
-add_executable(SpaceController SpaceController.cpp include/Point.cpp include/Sphere.cpp include/Vec3d.cpp include/Plane.cpp)
+add_executable(SpaceController SpaceController.cpp include/Point.cpp include/Sphere.cpp include/Vec3d.cpp include/Plane.cpp include/Box.cpp)
 add_executable(SafetyStatusDecider SafetyStatusDecider.cpp)
 add_executable(ForwardCalculator ForwardCalculator.cpp)
 add_executable(RobotJointVelocity RobotJointVelocity.cpp)

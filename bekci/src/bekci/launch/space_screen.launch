@@ -15,6 +15,7 @@
         pkg="bekci"
         type="SpaceController"
         name="SpaceController"
+        output="screen"
         args="$(find bekci)/input/space_limits.xml"
         />
 </group>

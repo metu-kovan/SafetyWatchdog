@@ -1,22 +1,24 @@
-<Planes Count="5" WarningM = "0.1">
-	<Plane id="1">
-		<Normal	x="1" y="0" z="0"></Normal>
-		<Point	x="-0.7" y="0" z="0"></Point>
-	</Plane>
-	<Plane id="2">
-		<Normal	x="-1" y="0" z="0"></Normal>
-		<Point	x="0.7" y="0" z="0"></Point>
-	</Plane>
-	<Plane id="3">
-		<Normal	x="0" y="1" z="0"></Normal>
-		<Point	x="0" y="-0.7" z="0"></Point>
-	</Plane>
-	<Plane id="4">
-		<Normal	x="0" y="-1" z="0"></Normal>
-		<Point	x="0" y="0.7" z="0"></Point>
-	</Plane>
-	<Plane id="5">
-		<Normal	x="0" y="0" z="1"></Normal>
-		<Point	x="0" y="0" z="0"></Point>
-	</Plane>
-</Planes>
+<Boxes Count="1" WarningM = "0.1">
+	
+	<Box id="1" PlaneCount="3">
+		<Plane id="1">
+			<Normal x="1" y="0" z="0"></Normal>
+			<Point  x="-0.30" y="0" z="0"></Point>
+		</Plane>
+		<Plane id="2">
+			<Normal x="0" y="0" z="1"></Normal>
+			<Point  x="0" y="0" z="-0.15"></Point>
+		</Plane>
+		<Plane>
+			<Normal x="0" y="1" z="0"></Normal>
+			<Point  x="0" y="0.6" z="0"></Point>
+		</Plane>
+	</Box>
+	<Box id="2" PlaneCount="1">
+		<Plane id="1">
+			<Normal x="0" y="0" z="1"></Normal>
+			<Point  x="0" y="0" z="-0.70"></Point>
+		</Plane>
+		
+	</Box>
+</Boxes>
