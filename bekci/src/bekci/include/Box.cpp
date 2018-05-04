@@ -2,8 +2,9 @@
 #include <iostream>
 
 
-Box::Box(std::vector<Plane>& _pl) {
+Box::Box(std::vector<Plane>& _pl, bool _shared) {
     this->planes = _pl;
+    this->shared = _shared;
 }
 
 
@@ -13,6 +14,7 @@ void Box::add_plane(Plane & _add) {
 
 Box & Box::operator=(const Box& other) {
     this->planes = other.planes;
+    this->shared = other.shared;
     return *this;
 }
 void Box::print() {
@@ -38,10 +40,15 @@ int Box::checkSphereStatus(Sphere & sp,double mar)  {
             one_count++;
     }
     if ((three_count + two_count )== this->planes.size()) {
-        return 2;
+        if(this->shared == true) {
+            return 1;
+        }
+        else {   
+            return 2;
+        }
     }
     else if(three_count>0 || two_count>0) {
-        return 1;
+        return 0;
     }
     return 0;
 

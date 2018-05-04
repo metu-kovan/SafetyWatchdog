@@ -70,13 +70,13 @@ int Plane::checkSphereStatus(Sphere & sp,double mar) {
     double dot_res = s_to_p.dot(normal);
     //std::cout<<"fabs "<<fabs(dot_res)<<" r+m "<<sp.r+mar<<std::endl;
     if (dot_res>0) {
-        status = 3;
+        status = 2;
     }
     else if(fabs(dot_res)<=sp.r) {
         status = 2;
     }
     else if(fabs(dot_res)>sp.r && fabs(dot_res)<=sp.r+mar) {
-        status = 1;
+        status = 0;
     }    
     return status;
 }

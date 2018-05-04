@@ -13,7 +13,7 @@ find_package(catkin REQUIRED COMPONENTS genmsg std_msgs geometry_msgs message_ge
 find_package(Boost REQUIRED COMPONENTS system )
 add_compile_options(-std=c++11)
 
-add_message_files(FILES SpaceSafetyStatus.msg JointValue.msg JointPose.msg Pose.msg QuantativeSafetyStatus.msg JointVelocity.msg)
+add_message_files(FILES SpaceSafetyStatus.msg JointValue.msg JointPose.msg Pose.msg QuantativeSafetyStatus.msg JointVelocity.msg Action.msg)
 
 generate_messages(DEPENDENCIES std_msgs)
 
@@ -49,6 +49,7 @@ add_executable(SpaceController SpaceController.cpp include/Point.cpp include/Sph
 add_executable(SafetyStatusDecider SafetyStatusDecider.cpp)
 add_executable(ForwardCalculator ForwardCalculator.cpp)
 add_executable(RobotJointVelocity RobotJointVelocity.cpp)
+add_executable(StopAction StopAction.cpp)
 
 add_dependencies(RobotJointVelocity bekci_generate_messages_cpp)
 add_dependencies(QuantativeController bekci_generate_messages_cpp)
@@ -56,6 +57,7 @@ add_dependencies(ForwardCalculator bekci_generate_messages_cpp)
 add_dependencies(SpaceController bekci_generate_messages_cpp)
 add_dependencies(RobotJointAngle  bekci_generate_messages_cpp)
 add_dependencies(SafetyStatusDecider bekci_generate_messages_cpp)
+add_dependencies(StopAction bekci_generate_messages_cpp)
 
 link_directories(${catkin_LIBRARY_DIRS})
 
@@ -65,6 +67,7 @@ target_link_libraries(SpaceController ${catkin_LIBRARIES} ${boost_LIBRARIES} pug
 target_link_libraries(RobotJointVelocity ${catkin_LIBRARIES})
 target_link_libraries(SafetyStatusDecider ${catkin_LIBRARIES} ${boost_LIBRARIES})
 target_link_libraries(ForwardCalculator ${catkin_LIBRARIES})
+target_link_libraries(StopAction ${catkin_LIBRARIES})
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}

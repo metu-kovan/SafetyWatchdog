@@ -1,6 +1,6 @@
 <Boxes Count="1" WarningM = "0.1">
 	
-	<Box id="1" PlaneCount="3">
+	<Box id="1" PlaneCount="3" Shared="0">
 		<Plane id="1">
 			<Normal x="1" y="0" z="0"></Normal>
 			<Point  x="-0.30" y="0" z="0"></Point>
@@ -14,7 +14,7 @@
 			<Point  x="0" y="0.6" z="0"></Point>
 		</Plane>
 	</Box>
-	<Box id="2" PlaneCount="1">
+	<Box id="2" PlaneCount="1" Shared="1">
 		<Plane id="1">
 			<Normal x="0" y="0" z="1"></Normal>
 			<Point  x="0" y="0" z="-0.70"></Point>

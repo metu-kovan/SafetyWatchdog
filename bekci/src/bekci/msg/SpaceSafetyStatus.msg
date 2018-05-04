@@ -1,1 +1,1 @@
-int8[]  sphere_status
+uint8 zone

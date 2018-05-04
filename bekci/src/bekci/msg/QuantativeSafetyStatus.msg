@@ -1,1 +1,1 @@
-uint8[] joint_status
+uint8 vlimit

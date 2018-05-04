@@ -29,23 +29,36 @@ void limiter(const bekci::JointVelocity & in_msg)
 {
     maxi = 0;
     bekci::QuantativeSafetyStatus out_msg;
-    out_msg.joint_status.resize(in_msg.DOF);
-    for(int i=0;i<in_msg.DOF;i++) //because of 6 joints
+    //out_msg.joint_status.resize(in_msg.DOF);
+    for(int i=0;i<in_msg.DOF;i++) 
     {
         //ROS_INFO_STREAM("for joint "<<i<<" "<<joint_limits[i].joint_name<<" joint speed" 
         //        "limits is "<<joint_limits[i].speed_limit<<" and its current speed is " <<abs(in_msg.velocities[i]));
         if (fabs(in_msg.velocities[i])>maxi) {
             maxi = fabs(in_msg.velocities[i]);
         }
-        out_msg.joint_status[i] = 0;
+        /*out_msg.joint_status[i] = 0;
         if(joint_limits[i].isSmaller(fabs(in_msg.velocities[i]))==true) {
             ROS_INFO_STREAM("joint "<<joint_limits[i].joint_name<<" off limits with speed"<< in_msg.velocities[i]);
             out_msg.joint_status[i] = 2;
-        } else if(joint_limits[i].isSmaller(fabs(in_msg.velocities[i])+margin)==true)
+        } *//*else if(joint_limits[i].isSmaller(fabs(in_msg.velocities[i])+margin)==true)
         {
             ROS_INFO_STREAM("joint "<<joint_limits[i].joint_name<<" in margin with speed"<< in_msg.velocities[i]);
             out_msg.joint_status[i] = 1;
-        } 
+        } */
+    }
+    out_msg.vlimit = 0;
+    for(int i=0; i<joint_limits.size();i++) {
+        if(joint_limits[i].isSmaller(maxi)) {
+            ROS_INFO_STREAM("2");
+            joint_limits[i].print();
+            out_msg.vlimit = 2;
+        }
+        else if(out_msg.vlimit == 0 && joint_limits[i].isSharedSmaller(maxi)) {
+            ROS_INFO_STREAM("1");
+            joint_limits[i].print();
+            out_msg.vlimit = 1;
+        }
     }
     cout<<maxi<<endl;
     pub->publish(out_msg);
@@ -67,13 +80,15 @@ int main(int argc,char** argv)
     
     margin = doc.child("Joints").attribute("WarningM").as_float();
     cout<<margin<<endl;
+    bool j_shared;
     for (pugi::xml_node joint = doc.child("Joints").child("Joint"); joint; joint = joint.next_sibling("Joint"))
     {
 
         j_name = joint.attribute("Name").as_string();
         j_limit = joint.attribute("SpeedLimit").as_float();
+        j_shared = joint.attribute("SharedSpeedLimit").as_float();
         cout<<"j_name "<<j_name<<endl;
-        JointLimits temp(j_name,j_limit);
+        JointLimits temp(j_name,j_limit,j_shared);
 
         joint_limits.push_back(temp);
     }

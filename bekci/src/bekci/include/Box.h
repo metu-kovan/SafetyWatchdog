@@ -1,5 +1,3 @@
-
-
 #ifndef CLASS_BEKCI_BOX
 #define CLASS_BEKCI_BOX
 
@@ -13,9 +11,10 @@
 class Box {
     public:
         std::vector<Plane> planes;
+        bool shared;
         Box();
 
-        Box(std::vector<Plane>& _pl);
+        Box(std::vector<Plane>& _pl,bool _shared);
         
 
         void add_plane(Plane & _add);

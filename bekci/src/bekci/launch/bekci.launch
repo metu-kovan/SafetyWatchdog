@@ -12,6 +12,12 @@
         type="SafetyStatusDecider"
         name="SafetyStatusDecider"
         output="screen"
+        />
+        
+    <node
+        pkg="bekci"
+        type="StopAction"
+        name="StopAction"
         args="real"
         />
 </group>
