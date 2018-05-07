@@ -53,12 +53,14 @@ void limiter(const bekci::JointVelocity & in_msg)
             ROS_INFO_STREAM("2");
             joint_limits[i].print();
             out_msg.vlimit = 2;
-        }
-        else if(out_msg.vlimit == 0 && joint_limits[i].isSharedSmaller(maxi)) {
+        } else if(out_msg.vlimit == 0 && joint_limits[i].isSharedSmaller(maxi)) {
             ROS_INFO_STREAM("1");
             joint_limits[i].print();
             out_msg.vlimit = 1;
+        } else if(joint_limits[i].isSharedSmaller(maxi)) {
+            ROS_INFO_STREAM("error");
         }
+        ROS_INFO_STREAM(joint_limits[i].shared_speed_limit);
     }
     cout<<maxi<<endl;
     pub->publish(out_msg);
@@ -73,6 +75,7 @@ int main(int argc,char** argv)
     string  a= ros::package::getPath(pack);
     string j_name;
     double j_limit;
+
     pugi::xml_document doc;
 
     pugi::xml_parse_result result = doc.load_file(argv[1]);
@@ -80,7 +83,7 @@ int main(int argc,char** argv)
     
     margin = doc.child("Joints").attribute("WarningM").as_float();
     cout<<margin<<endl;
-    bool j_shared;
+    double j_shared;
     for (pugi::xml_node joint = doc.child("Joints").child("Joint"); joint; joint = joint.next_sibling("Joint"))
     {
 

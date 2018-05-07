@@ -43,13 +43,13 @@ catkin_package(
     LIBRARIES pugi
 )
 
-add_executable(QuantativeController QuantativeController.cpp include/JointLimits.cpp)
-add_executable(RobotJointAngle RobotJointAngle.cpp)
-add_executable(SpaceController SpaceController.cpp include/Point.cpp include/Sphere.cpp include/Vec3d.cpp include/Plane.cpp include/Box.cpp)
-add_executable(SafetyStatusDecider SafetyStatusDecider.cpp)
-add_executable(ForwardCalculator ForwardCalculator.cpp)
-add_executable(RobotJointVelocity RobotJointVelocity.cpp)
-add_executable(StopAction StopAction.cpp)
+add_executable(QuantativeController src/QuantativeController.cpp include/JointLimits.cpp)
+add_executable(RobotJointAngle src/RobotJointAngle.cpp)
+add_executable(SpaceController src/SpaceController.cpp include/Point.cpp include/Sphere.cpp include/Vec3d.cpp include/Plane.cpp include/Box.cpp)
+add_executable(SafetyStatusDecider src/SafetyStatusDecider.cpp)
+add_executable(ForwardCalculator src/ForwardCalculator.cpp)
+add_executable(RobotJointVelocity src/RobotJointVelocity.cpp)
+add_executable(StopAction src/StopAction.cpp)
 
 add_dependencies(RobotJointVelocity bekci_generate_messages_cpp)
 add_dependencies(QuantativeController bekci_generate_messages_cpp)

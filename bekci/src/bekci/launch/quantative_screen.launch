@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<launch>
+<group ns="guvenlik_bekcisi">
+    <node
+        pkg="bekci"
+        type="RobotJointVelocity"
+        name="RobotJointVelocity"
+        />
+    <node
+        pkg="bekci"
+        type="QuantativeController"
+        name="QuantativeController"
+        output="screen"
+        args="$(find bekci)/input/quantative_limits.xml"
+        />
+</group>
+</launch>

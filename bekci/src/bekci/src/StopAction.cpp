@@ -21,6 +21,7 @@ void goalIDKeeper(const control_msgs::FollowJointTrajectoryActionGoal & msg) {
 void robotActionCallback(const bekci::Action & in_msg) {
     if(in_msg.action == 2) {
         actionlib_msgs::GoalID cancel;
+        cancel.id = current_goal.id;
         pub->publish(cancel);
     }
 }

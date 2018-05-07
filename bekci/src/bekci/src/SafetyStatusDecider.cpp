@@ -71,14 +71,20 @@ int main(int argc,char** argv) {
         bekci::Action out_msg;
         out_msg.action = 0;
         if(zone == 2) {
-            ROS_INFO_STREAM("RED ZONE");
+            ROS_INFO_STREAM("ROBOT IS IN THE RED ZONE---STOPING THE ROBOT");
             out_msg.action = 2;
+        } else if(vlimit == 2) {
+            ROS_INFO_STREAM("ROBOT IS TOO FAST---STOPING THE ROBOT");
+            out_msg.action = 2;
+        } else if(zone == 1 && vlimit == 0) {
+            ROS_INFO_STREAM("ROBOT IS IN THE SHARED SPACE---DOING NOTHING");
+            out_msg.action = 0;
         } else if(zone == 1 && vlimit == 1) {
-            ROS_INFO_STREAM("YOU ARE IN THE SHARED SPACE SLOW DOWN INITIATED");
+            ROS_INFO_STREAM("ROBOT IS IN THE SHARED SPACE SLOW DOWN INITIATED");
             out_msg.action = 1;
             ZTF = 1;
         } else if(zone == 0 && ZTF == 1) {
-            ROS_INFO_STREAM("YOU ARE OUT OF SHARE SPACE SPEED NORMALIZATION INITIATED");
+            ROS_INFO_STREAM("ROBOT IS OUT OF SHARE SPACE SPEED NORMALIZATION INITIATED");
             out_msg.action = 3;
             ZTF = 0;
         }
