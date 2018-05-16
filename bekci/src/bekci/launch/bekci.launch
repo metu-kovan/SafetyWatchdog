@@ -3,7 +3,7 @@
 
   <include file="$(find bekci)/launch/quantative.launch">
   </include>
-  <include file="$(find bekci)/launch/space.launch">
+  <include file="$(find bekci)/launch/space_screen.launch">
   </include>
 
   <group ns="guvenlik_bekcisi">

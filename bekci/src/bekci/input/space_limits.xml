@@ -2,7 +2,7 @@
 
 <!-- <Boxes Count="4" WarningM = "0.1">
 	
-	<Box id="1" PlaneCount="3" Shared="0">
+ 	<Box id="1" PlaneCount="3" Shared="0">
 		<Plane id="1">
 			<Normal x="1" y="0" z="0"></Normal>
 			<Point  x="1" y="0" z="0"></Point>
@@ -55,15 +55,17 @@
 			<Normal x="0" y="1" z="0"></Normal>
 			<Point  x="0" y="-0.6" z="0"></Point>
 		</Plane>
-	</Box>
-	<Box id="2" PlaneCount="1" Shared="1">
+	</Box> -->
+<!-- 	<Box id="2" PlaneCount="1" Shared="1">
 		<Plane id="1">
 			<Normal x="0" y="0" z="1"></Normal>
 			<Point  x="0" y="0" z="-0.70"></Point>
 		</Plane>
 		
 	</Box> -->
+
 	<Box id="3" PlaneCount="1" Shared="1">
+
 		<Plane id="1">
 			<Normal x="-1" y="0" z="0"></Normal>
 			<Point  x="0.3" y="0" z="0"></Point>
@@ -71,26 +73,17 @@
 		
 	</Box>
 
+
 	<!-- <Box id="4" PlaneCount="1" Shared="0">
+
 		<Plane id="1">
 			<Normal x="-1" y="0" z="0"></Normal>
 			<Point  x="0.5" y="0" z="0"></Point>
 		</Plane>
 		
 	</Box> -->
-</Boxes>
-
-
-<!-- 
-<Boxes Count="1" WarningM = "0.1">
-	
-	<Box id="3" PlaneCount="1" Shared="1">
-		<Plane id="1">
-			<Normal x="-1" y="0" z="0"></Normal>
-			<Point  x="0.3" y="0" z="0"></Point>
-		</Plane>
-		
-	</Box>
 
 </Boxes>
- -->
+
+
+
