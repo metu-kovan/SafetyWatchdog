@@ -50,6 +50,8 @@ add_executable(SafetyStatusDecider src/SafetyStatusDecider.cpp)
 add_executable(ForwardCalculator src/ForwardCalculator.cpp)
 add_executable(RobotJointVelocity src/RobotJointVelocity.cpp)
 add_executable(StopAction src/StopAction.cpp)
+add_executable(velocityScaler src/velocityScaler.cpp)	# terzi
+add_executable(visualizer src/visualizer.cpp)	# terzi
 
 add_dependencies(RobotJointVelocity bekci_generate_messages_cpp)
 add_dependencies(QuantativeController bekci_generate_messages_cpp)
@@ -58,6 +60,8 @@ add_dependencies(SpaceController bekci_generate_messages_cpp)
 add_dependencies(RobotJointAngle  bekci_generate_messages_cpp)
 add_dependencies(SafetyStatusDecider bekci_generate_messages_cpp)
 add_dependencies(StopAction bekci_generate_messages_cpp)
+add_dependencies(velocityScaler src/velocityScaler.cpp)	# terzi
+add_dependencies(visualizer src/visualizer.cpp)	# terzi
 
 link_directories(${catkin_LIBRARY_DIRS})
 
@@ -68,6 +72,9 @@ target_link_libraries(RobotJointVelocity ${catkin_LIBRARIES})
 target_link_libraries(SafetyStatusDecider ${catkin_LIBRARIES} ${boost_LIBRARIES})
 target_link_libraries(ForwardCalculator ${catkin_LIBRARIES})
 target_link_libraries(StopAction ${catkin_LIBRARIES})
+target_link_libraries(velocityScaler ${catkin_LIBRARIES}) 		# terzi
+target_link_libraries(visualizer ${catkin_LIBRARIES} pugi) 		# terzi
+
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}

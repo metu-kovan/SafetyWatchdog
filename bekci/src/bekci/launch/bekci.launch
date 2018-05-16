@@ -11,7 +11,6 @@
         pkg="bekci"
         type="SafetyStatusDecider"
         name="SafetyStatusDecider"
-        output="screen"
         />
         
     <node
@@ -19,6 +18,22 @@
         type="StopAction"
         name="StopAction"
         args="real"
+        />
+
+    <node
+        pkg="bekci"
+        type="velocityScaler"
+        name="velocityScaler"
+        args="real"
+        output="screen"
+        />
+
+    <node
+        pkg="bekci"
+        type="visualizer"
+        name="visualizer"
+        args="$(find bekci)/input/space_limits.xml"
+        output="screen"
         />
 </group>
 
