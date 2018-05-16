@@ -31,7 +31,7 @@ int Box::checkSphereStatus(Sphere & sp,double mar)  {
     for(int i=0;i<this->planes.size();i++) {
         int temp;
         temp = this->planes[i].checkSphereStatus(sp,mar);
-        std::cout<<"danger for plane "<<i<< " is "<<temp<<std::endl;
+        //std::cout<<"danger for plane "<<i<< " is "<<temp<<std::endl;
         if(temp == 3)
             three_count++;
         else if(temp == 2)

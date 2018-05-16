@@ -14,76 +14,104 @@
 #include <bekci/SpaceSafetyStatus.h>
 #include <map>
 #include <string>
-
-
 #include <vector>
+
 #include <ros/package.h>
 #include <boost/algorithm/string.hpp>
+#include <bekci/JointVelocity.h>
 
 #include <stdlib.h>
 using namespace std;
 
+
+#ifndef zero
+#define zero 0.05
+#endif
+
+#ifndef shrink_value
+#define shrink_value 10
+#endif
 
 ros::Publisher* pub; 
 string current_goal;
 vector<Sphere> sphere_holder;
 vector<Box> box_holder;
 double margin;
+double divide;
+double glob_wait;
+void robotVelocityReceiver(const bekci::JointVelocity & in_msg) {                       // Checks for sphere shrink
+    int count = 0;
+    for(int i=0;i<in_msg.DOF;i++) 
+    {
+        if (fabs(in_msg.velocities[i])>zero) {                                          // if velocity is larger than dont shrink
+            count++;
 
-
-
-
-
-
-void robotPoseReceiver(const bekci::JointPose & in_msg) {
-    bekci::SpaceSafetyStatus out_msg;
-    //out_msg.sphere_status.resize(6);
-    for(int i=0;i<in_msg.DOF;i++) {
-        sphere_holder[i].setValues (in_msg.radiuses[i],in_msg.poses[i]);
+        } 
         
     }
+    if (count >0 && glob_wait>5) {
+        divide = 1;
+    } else if (count == 0){
+        divide = shrink_value;
+        glob_wait = 0;
+    }
+    glob_wait++;
+    cout<<glob_wait<<"         ---------            "<<divide<<endl;
+}
 
-    int current_status;
-    int old_status;
-    int sp;
-    for(int i=0;i<box_holder.size();i++) {
-        old_status = 0;
+
+
+
+// gets the values of the joints positions from ForwardCalculator node
+void robotPoseReceiver(const bekci::JointPose & in_msg) {
+    bekci::SpaceSafetyStatus out_msg;                                                   //  output message
+    for(int i=0;i<in_msg.DOF;i++) {                                                     // updates joint positions and radiuses based on the output of Forward
+        sphere_holder[i].setValues ((in_msg.radiuses[i]/divide),in_msg.poses[i]);       // uses the sphere class function
+//        sphere_holder[i].print();
+    }
+
+    int sphere_status;                                                                  // sphere status for each box
+    int box_status;                                                                     // sphere status is updated for each sphere but box_status kept for each box
+    int sp;                                                                             // sphere count
+    for(int i=0;i<box_holder.size();i++) {                                              // for each box in the system
+        box_status = 0;                                                                 
         sp = 0;
-        for(int k=1;k<sphere_holder.size();k++) {
+        for(int k=1;k<sphere_holder.size();k++) {                                       // check every sphere
 
-            current_status = box_holder[i].checkSphereStatus(sphere_holder[k],margin);
-            if(sphere_holder[k].status<current_status) {
-                sphere_holder[k].status = current_status;
+            sphere_status = box_holder[i].checkSphereStatus(sphere_holder[k],margin);  // checks the status of the sphere compared to specific box
+            if(sphere_holder[k].status<sphere_status) {                                // if current status is larger than previous known status update that
+                sphere_holder[k].status = sphere_status;   
             }
-            if(current_status> old_status) {
-                old_status = current_status;
+            if(sphere_status> box_status) {
+                box_status = sphere_status;
                 sp = k;
             }
-            cout<<current_status<<endl;
+            // cout<<sphere_status<<endl;
             //cout<<"For plane "<<i<< " Sphere "<<k<<"in the status of "<<status<<endl;
         }
-        if(old_status>0) {
-            ROS_INFO_STREAM("For Box "<<i<<" higshest danger from sphere "<<sp<<"with status "<<old_status );    
-        }
+        // if(box_status>0) {
+        //     ROS_INFO_STREAM("For Box "<<i<<" higshest danger from sphere "<<sp<<"with status "<<box_status );    
+        // }
         
     }
-    int max = 0;
+    int max = 0;                                                                        // getting the highest valued state between spheres
     for(int i=0;i<sphere_holder.size();i++) {
         if(max<sphere_holder[i].status) {
             max  = sphere_holder[i].status;
         }
         // out_msg.sphere_status[i] = sphere_holder[i].status;
     }
-    out_msg.zone = max;
-    pub->publish(out_msg);
+    out_msg.zone = max;                                                                 // publishes the highest value
+    pub->publish(out_msg);                                                              // 2 = stop, 1 = shared region warning, 0 = do nothing
 
 }
 
 
 int main(int argc,char** argv) {
-    ros::init(argc, argv, "space_restriction");
+    ros::init(argc, argv, "space_restriction");                                         
     ros::NodeHandle nh;
-    string line;
+    string line;        
+    glob_wait = 0;                                                                    
     double n_x;
     double n_y;
     double n_z;
@@ -139,10 +167,11 @@ int main(int argc,char** argv) {
     }
     
     ros::Rate rate(10);
-    ros::Subscriber sub_state = nh.subscribe("/robot_joint_pose", 100, &robotPoseReceiver);
-
+    ros::Subscriber sub_state   = nh.subscribe("/robot_joint_pose", 100, &robotPoseReceiver);
+    ros::Subscriber sub_vel     = nh.subscribe("/joint_velocity",1, &robotVelocityReceiver);
     
     pub= new ros::Publisher(nh.advertise<bekci::SpaceSafetyStatus>("/space_safety",10));
+
     while(ros::ok()) {
 
         ros::spinOnce();
